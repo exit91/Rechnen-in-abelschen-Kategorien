@@ -3,25 +3,25 @@
 Hier sind die 14 Rechenregeln, die uns der Prophet Roland L. auf Steintafeln gebracht hat. Das Studium dieser Aussagen über abelsche Kategorien hat dieses Handbuch motiviert.
 
 Im folgenden sei $\mathcal A$ eine abelsche Kategorie und mit $X,
-X_1 \overset{\iota_x^1}\monicr X,
-X_2 \overset{\iota_x^2}\monicr X,
-X'  \overset{\iota_x'}\monicr X,
+X_1 \overset{x_1}\monicr X,
+X_2 \overset{x_2}\monicr X,
+X'  \overset{x'}\monicr X,
 Y,
-Y_1 \overset{\iota_y^1}\monicr Y,
-Y_2 \overset{\iota_y^2}\monicr Y,
-Y'  \overset{\iota_y'}\monicr Y,
+Y_1 \overset{y_1}\monicr Y,
+Y_2 \overset{y_2}\monicr Y,
+Y'  \overset{y'}\monicr Y,
 Z,
-Z'  \overset{\iota_z'}\monicr Z$
+Z'  \overset{z'}\monicr Z$
 seien Objekte und Unterobjekte dieser Kategorie gemeint.
 Weiter seien $f:X\to Y, g:Y\to Z$ Pfeile.
 
 \begin{defn}[Objektnotation]
 Wir definieren
 \begin{itemize}
-\item $X_1 \cap X_2 := X_1\times_Z X_2$ als Unterobjekt von $X$ via $\iota_x^1.\fib(\iota_x^1, \iota_x^2)_1$.
-\item $X_1+X_2 = \Bild(X_1 \oplus X_2 \to X)$ als Unterobjekt von $X$ via $\im(\coprodop(\iota_x^1,\iota_x^2))$.
-\item $f^{-1}(Y') = X \times_{f,Y,\iota_y'} Y'$ als Unterobjekt von $X$ via $\fib(f,\iota_y')_1$
-\item $f(X') = \Bild(f.\iota_x')$ als Unterobjekt von $Y$ via $\im(f.\iota_x')$.
+\item $X_1 \cap X_2 := X_1\times_Z X_2$ als Unterobjekt von $X$ via $x_1.\fib(x_1, x_2)_1$.
+\item $X_1+X_2 = \Bild(X_1 \oplus X_2 \to X)$ als Unterobjekt von $X$ via $\im(\coprodop(x_1,x_2))$.
+\item $f^{-1}(Y') = X \times_{f,Y,y'} Y'$ als Unterobjekt von $X$ via $\fib(f,y')_1$
+\item $f(X') = \Bild(f.x')$ als Unterobjekt von $Y$ via $\im(f.x')$.
 \end{itemize}
 \end{defn}
 
@@ -32,10 +32,10 @@ Ohne Beweis habe ich oben angenommen, dass die vorkommenden Inklusionspfeile Mon
 \begin{prop}[Reflexionsprinzip]
 Unterobjekte und Quotientenobjekte stehen in enger Beziehung zueinander:
 \begin{enumerate}
-\item $\cofib(\coker(\iota_x^1), \coker(\iota_x^2)) = \coker(\coprodop(\iota_x^1,\iota_x^2))$, (d.h. $X/X_1 \cap X/X_2 = X/(X_1+X_2)$ mit Schnitt in $\mathcal A^{op}$)
-\item $\coim(\prodop(\coker(\iota_x^1),\coker(\iota_x^2))) = \coker(\fib(\iota_x^1,\iota_x^2))$ (d.h. $X/X_1 + X/X_2 = X/(X_1\cap X_2)$ mit Summe in $\mathcal A^{op}$)
-\item $\coim(\coker(\iota_y').f) = \coker(\fib(f,\iota_y'))$ (d.h. $f^{op}(Y/Y') = X/f^{-1}(Y')$ mit Bild in $\mathcal A^{op}$)
-\item $\cofib(f,\coker(\iota_x')) = \coker(\im(f.\iota_x'))$ (d.h. $(f^{op})^{-1}(X/X') = Y/f(X')$ mit Urbild in $\mathcal A^{op}$)
+\item $\cofib(\coker(x_1), \coker(x_2)) = \coker(\coprodop(x_1,x_2))$, (d.h. $X/X_1 \cap X/X_2 = X/(X_1+X_2)$ mit Schnitt in $\mathcal A^{op}$)
+\item $\coim(\prodop(\coker(x_1),\coker(x_2))) = \coker(\fib(x_1,x_2))$ (d.h. $X/X_1 + X/X_2 = X/(X_1\cap X_2)$ mit Summe in $\mathcal A^{op}$)
+\item $\coim(\coker(y').f) = \coker(\fib(f,y'))$ (d.h. $f^{op}(Y/Y') = X/f^{-1}(Y')$ mit Bild in $\mathcal A^{op}$)
+\item $\cofib(f,\coker(x')) = \coker(\im(f.x'))$ (d.h. $(f^{op})^{-1}(X/X') = Y/f(X')$ mit Urbild in $\mathcal A^{op}$)
 \end{enumerate}
 Siehe (Blatt 1, Warmup)
 \end{prop}
@@ -74,18 +74,18 @@ Formuliere universelle Eigenschaft für Dreifachschnitte bzw. Dreifachsummen, et
 \begin{lemm}[Regel (d)] $\quad$ % Zeilenumbruch
 % TODO: Prüfe auf Richtigkeit!
 \begin{enumerate}
-\item $\fib(g.f, \iota_z')_1 = \fib(f, \fib(g, \iota_z')_1)_1$ (d.h. $(g.f)^{-1}(Z') = f^{-1}(g^{-1}(Z'))$)
-\item $\im(g.f.\iota_x') = \im(g.\im(f.\iota_x'))$ (d.h. $(g.f)(X') = g(f(X'))$)
+\item $\fib(g.f, z')_1 = \fib(f, \fib(g, z')_1)_1$ (d.h. $(g.f)^{-1}(Z') = f^{-1}(g^{-1}(Z'))$)
+\item $\im(g.f.x') = \im(g.\im(f.x'))$ (d.h. $(g.f)(X') = g(f(X'))$)
 \end{enumerate}
 \end{lemm}
 
 \begin{lemm}[Regel (e)]
 \[
-\im(f.\fib(f,\iota_y')_1) = \im(f).\fib(\im(f),\iota_y')_1
+\im(f.\fib(f,y')_1) = \im(f).\fib(\im(f),y')_1
 \]
 und
 \[
-\fib(f,\im(f.\iota_x')) = \im(\coprodop(\iota_x', \ker(f)))
+\fib(f,\im(f.x')) = \im(\coprodop(x', \ker(f)))
 \]
 In Objektnotation heißt dies: $f(f^{-1}(Y')) = Y' \cap \Bild(f)$, bzw. $f^{-1}(f(X')) = X' + \Kern(f)$.
 \end{lemm}
