@@ -19,7 +19,7 @@ Weiter seien $f:X\to Y, g:Y\to Z$ Pfeile.
 Wir definieren
 \begin{itemize}
 \item $X_1 \cap X_2 := X_1\times_Z X_2$ als Unterobjekt von $X$ via $\iota_x^1.\fib(\iota_x^1, \iota_x^2)_1$.
-\item $X_1+X_2 = \Bild(X_1 \oplus X_2 \to X)$ als Unterobjekt von $X$ via $\im(\coprod(\iota_x^1,\iota_x^2))$.
+\item $X_1+X_2 = \Bild(X_1 \oplus X_2 \to X)$ als Unterobjekt von $X$ via $\im(\coprodop(\iota_x^1,\iota_x^2))$.
 \item $f^{-1}(Y') = X \times_{f,Y,\iota_y'} Y'$ als Unterobjekt von $X$ via $\fib(f,\iota_y')_1$
 \item $f(X') = \Bild(f.\iota_x')$ als Unterobjekt von $Y$ via $\im(f.\iota_x')$.
 \end{itemize}
@@ -29,11 +29,11 @@ Wir definieren
 Ohne Beweis habe ich oben angenommen, dass die vorkommenden Inklusionspfeile Monos sind, hier eine kurze Begründung: etc.pp. %TODO
 \end{bem}
 
-\begin{prop}[Reflexionsprinzip] $\quad$ % Zeilenumbruch
+\begin{prop}[Reflexionsprinzip]
 Unterobjekte und Quotientenobjekte stehen in enger Beziehung zueinander:
 \begin{enumerate}
-\item $\cofib(\coker(\iota_x^1), \coker(\iota_x^2)) = \coker(\coprod(\iota_x^1,\iota_x^2))$, (d.h. $X/X_1 \cap X/X_2 = X/(X_1+X_2)$ mit Schnitt in $\mathcal A^{op}$)
-\item $\coim(\prod(\coker(\iota_x^1),\coker(\iota_x^2))) = \coker(\fib(\iota_x^1,\iota_x^2))$ (d.h. $X/X_1 + X/X_2 = X/(X_1\cap X_2)$ mit Summe in $\mathcal A^{op}$)
+\item $\cofib(\coker(\iota_x^1), \coker(\iota_x^2)) = \coker(\coprodop(\iota_x^1,\iota_x^2))$, (d.h. $X/X_1 \cap X/X_2 = X/(X_1+X_2)$ mit Schnitt in $\mathcal A^{op}$)
+\item $\coim(\prodop(\coker(\iota_x^1),\coker(\iota_x^2))) = \coker(\fib(\iota_x^1,\iota_x^2))$ (d.h. $X/X_1 + X/X_2 = X/(X_1\cap X_2)$ mit Summe in $\mathcal A^{op}$)
 \item $\coim(\coker(\iota_y').f) = \coker(\fib(f,\iota_y'))$ (d.h. $f^{op}(Y/Y') = X/f^{-1}(Y')$ mit Bild in $\mathcal A^{op}$)
 \item $\cofib(f,\coker(\iota_x')) = \coker(\im(f.\iota_x'))$ (d.h. $(f^{op})^{-1}(X/X') = Y/f(X')$ mit Urbild in $\mathcal A^{op}$)
 \end{enumerate}
@@ -85,7 +85,7 @@ Formuliere universelle Eigenschaft für Dreifachschnitte bzw. Dreifachsummen, et
 \]
 und
 \[
-\ldots %TODO
+\fib(f,\im(f.\iota_x')) = \im(\coprodop(\iota_x', \ker(f)))
 \]
 In Objektnotation heißt dies: $f(f^{-1}(Y')) = Y' \cap \Bild(f)$, bzw. $f^{-1}(f(X')) = X' + \Kern(f)$.
 \end{lemm}
