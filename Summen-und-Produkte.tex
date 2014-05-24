@@ -1,0 +1,30 @@
+\section{Produkte und Coprodukte}
+
+%%%%%%%%%%%
+\subsection{Für allgemeine Kategorien}
+%%%%%%%%%%%
+
+Anders als im Titel erwähnt werde ich in diesem Abschnitt keine Coprodukte erwähnen -- es gelten einfach die dualen Aussagen.
+
+Sei $\mathcal C$ eine Kategorie, $(Y_i)_{i\in I}$ eine Familie von Objekten und es existiere ein Produkt $\prod_i Y_i := \prod_{i\in I} Y_i$ mit Projektionen $\pi_j : \prod_i Y_i \to Y_j$.
+
+\begin{prop} Die Projektionen sind Epis.
+\end{prop}
+
+Sei $X\in \mathcal C$ und $f_i : X \to Y_i$ Pfeile. Nach der universellen Eigenschaft des Produktes wird ein eindeutiger Pfeil $X \to \prod_i Y_i$ induziert, den ich mit $\prod_i f_i$ bezeichne, sodass für alle $i\in I$ gilt: $f_i = \pi_j . \prod_i f_i$.
+
+\begin{prop} Sei $u : W \to X$ ein Pfeil. Dann gilt $(\prod_i f_i) . u = \prod (f_i . u): W \to \prod_i Y_i$.
+\end{prop}
+
+%%%%%%%%%%%
+\subsection{In Abelschen Kategorien}
+%%%%%%%%%%%
+
+Sei nun $\mathcal A$ eine abelsche Kategorie, $X,X_1,..X_n$ sowie $Y,Y_1,..Y_n$ Objekte und $f_i : X_i \to Y_i$ (für $i = 1,..n$) Pfeile.
+Für die direkten Summen $\bigoplus_i X_i$ bzw. $\bigoplus_i Y_i$ bezeichne die Inklusionen und Projektionen mit $\iota^X_j : X_j \to \bigoplus_i X_i$ und $\pi^X_j : \bigoplus_i X_i \to X_j$ bzw. $\iota^Y_j : Y_j \to \bigoplus_i Y_i$ und $\pi^Y_j : \bigoplus_i Y_i \to Y_j$.
+
+\begin{prop} Die $f_i$ induzieren eindeutig einen Pfeil $\bigoplus_i f_i : \bigoplus_i X_i \to \bigoplus_i Y_i$ mit $f_j = \pi^Y_j . \bigoplus_i f_i . \iota^X_j$ für alle $j$.
+\end{prop}
+
+\begin{prop} Sind die $f_i$ Monos, so auch $\bigoplus_i f_i$.
+\end{prop}

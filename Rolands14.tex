@@ -1,0 +1,71 @@
+\section{Rolands Vierzehn}
+
+Hier sind die 14 Rechenregeln, die uns der Prophet Roland L. auf Steintafeln gebracht hat. Das Studium dieser Aussagen über abelsche Kategorien hat dieses Handbuch motiviert.
+
+Im folgenden sei $\mathcal A$ eine abelsche Kategorie und mit $X,
+X_1 \overset{\iota_x^1}\monicr X,
+X_2 \overset{\iota_x^2}\monicr X,
+X'  \overset{\iota_x'}\monicr X,
+Y,
+Y_1 \overset{\iota_y^1}\monicr Y,
+Y_2 \overset{\iota_y^2}\monicr Y,
+Y'  \overset{\iota_y'}\monicr Y,
+Z,
+Z'  \overset{\iota_z'}\monicr Z$
+seien Objekte und Unterobjekte dieser Kategorie gemeint.
+Weiter seien $f:X\to Y, g:Y\to Z$ Pfeile.
+
+\begin{defn}[Objektnotation]
+%TODO
+\end{defn}
+
+\begin{prop}[Dualitätsprinzip]
+%TODO
+Siehe (Blatt 1, Warmup)
+\end{prop}
+
+\begin{lemm}[Regel (a)] $\quad$ % erzwinge Zeilenumbruch
+\begin{enumerate}
+\item $\im(0_{0,X} = 0_{0,X}$ (d.h. $f(0) = 0$)
+\item $\im(f.\id_X) = \im(f)$ (d.h. $f(X) = X$)
+\item $\fib(f,0_{0,Y})_1 = \ker(f)$ (d.h. $f^{-1}(0) = \Kern(f)$)
+\item $\fib(f,\id_Y)_1 = \id_X$ (d.h. $f^{-1}(Y) = X$)
+\end{enumerate}
+\end{lemm}
+
+\begin{lemm}[Regel (b)]
+Es gelten $X_1 \cap X_2 = X_2 \cap X_1$
+sowie $X_1 + X_2 = X_2 + X_1$ als Unterobjekte.
+\end{lemm}
+\begin{bew}
+%TODO
+verwende das Dualitätsprinzip etc.
+\end{bew}
+
+\begin{lemm}[Regel (c)]
+Es gelten $X' \cap (X_1 \cap X_2) = (X' \cap X_1) \cap X_2$ 
+sowie $X' + (X_1 + X_2) = (X' + X_1) + X_2$ als Unterobjekte.
+\end{lemm}
+\begin{bew}
+%TODO
+Formuliere universelle Eigenschaft für Dreifachschnitte bzw. Dreifachsummen, etc.
+\end{bew}
+
+\begin{lemm}[Regel (d)] $\quad$ % Zeilenumbruch
+% TODO: Prüfe auf Richtigkeit!
+\begin{enumerate}
+\item $\fib(g.f, \iota_z')_1 = \fib(f, \fib(g, \iota_z')_1)_1$ (d.h. $(g.f)^{-1}(Z') = f^{-1}(g^{-1}(Z'))$)
+\item $\im(g.f.\iota_x') = \im(g.\im(f.\iota_x'))$ (d.h. $(g.f)(X') = g(f(X'))$)
+\end{enumerate}
+\end{lemm}
+
+\begin{lemm}[Regel (e)]
+\[
+\im(f.\fib(f,\iota_y')_1) = \im(f).\fib(\im(f),\iota_y')_1
+\]
+und
+\[
+\ldots %TODO
+\]
+In Objektnotation heißt dies: $f(f^{-1}(Y')) = Y' \cap \Bild(f)$, bzw. $f^{-1}(f(X')) = X' + \Kern(f)$.
+\end{lemm}

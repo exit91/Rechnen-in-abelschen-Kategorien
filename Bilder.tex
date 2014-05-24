@@ -1,0 +1,83 @@
+\section{Kerne, Cokerne, Bilder und Cobilder}
+
+Wir sind nun in einer abelschen Kategorie $\mathcal A$.
+
+%%%%%%%%%%%
+\subsection{Kerne (und Cokerne)}
+%%%%%%%%%%%
+
+
+\begin{prop}
+Für $X,Y \in \mathcal A$ gelten
+\begin{enumerate}
+\item $\ker(0_{X,Y}) = \id_X$
+\item $\coker(0_{X,Y}) = \id_Y$
+\item $\ker(\id_Y) = 0_{0,Y}$
+\item $\coker(\id_X) = 0_{X,0}$
+\end{enumerate}
+\end{prop}
+
+\begin{prop}
+Ein Pfeil $\beta : Y \monicr Z$ ist genau dann ein Mono, wenn $\ker(\beta) = 0_{0,Y}$.
+
+Ein Pfeil $\alpha : X \epicr Y$ ist genau dann ein Epi, wenn $\coker(\alpha) = 0_{Y,0}$.
+\end{prop}
+
+%%%%%%%%%%%
+\subsection{Bilder (und Cobilder)}
+%%%%%%%%%%%
+
+\begin{defn}
+Sei $f : X\to Y$ ein Pfeil, dann bezeichnet man den Kern des Cokerns $\ker(\coker(f)) =: \im(f)$ als Bild von $f$
+und den Cokern des Kerns $\coker(\ker(f)) =: \coim(f)$ als Cobild von $f$.
+\end{defn}
+
+\begin{prop}
+Sei $f:X\to Y$ ein Pfeil, dann erfüllt jedes Bild $\im(f) =: g : B \to Y$ folgende universelle Eigenschaft:
+Es gibt einen Pfeil $h : X \to B$, sodass $g.h = f$. Weiters gibts für jede Faktorisierung $f = m . e : X \to B' \to Y$ mit $m$ Mono einen eindeutigen Pfeil $\gamma : B \to B'$, sodass $h = m.\gamma$.
+\end{prop}
+
+\begin{prop}
+Für $X,Y \in \mathcal A$ gelten
+\begin{enumerate}
+\item $\im(\id_X) = \id_X$
+\item $\coim(\id_Y) = \id_Y$
+\item $\im(0_{X,Y}) = 0_{0,Y}$
+\item $\coim(0_{X,Y}) = 0_{X,0}$
+\end{enumerate}
+\end{prop}
+
+
+\begin{prop}
+Seien $\alpha : X \to Y, \beta : Y \monicr Z$ Pfeile und $\beta$ Mono.
+Dann gilt $\im(\beta.\alpha) = \beta.\im(\alpha)$.
+\end{prop}
+
+
+\begin{prop}
+Seien $\alpha : X \epicr Y, \beta : Y \to Z$ Pfeile und $\alpha$ Epi.
+Dann gilt $\im(\beta.\alpha) = \im(\beta)$.
+\end{prop}
+
+\begin{korr}
+Seien $\alpha : X \epicr Y, \beta : Y \monicr Z$, $\alpha$ Epi und $\beta$ Mono, dann gilt $\im(\beta.\alpha) = \beta$. Insbesondere gelten $\im(\beta) = \beta$ und $\im(\alpha) = \id_Y$.
+\end{korr}
+\begin{bew}
+$\im(\beta.\alpha) = \im(\beta) = \beta.\im(\id) = \beta$. Für die anderen Aussagen setzte jeweils $\alpha = \id_Y, X=Y$ bzw. $\beta = \id_Y, Y=Z$.
+\end{bew}
+\begin{bem}
+Umgekehrt folgt aus $\im(\beta') = \beta'$ für einen Pfeil $\beta'$, dass $\beta'$ ein Mono ist, d.h.:
+Es ist $\beta$ genau dann Mono, wenn $\im(\beta) = \beta$
+\end{bem}
+
+\begin{korr}
+Monos sind Kerne und Kerne sind Monos.
+\end{korr}
+\begin{bew}
+Ist $\beta$ ein Mono, so gilt $\beta = \im(\beta) = \ker(\coker(\beta))$.
+Jeder Kern ist Mono nach Proposition soundso.
+\end{bew}
+
+\begin{bem}[Epi-Mono-Faktorisierung]
+Für jeden Pfeil $f$ einer abelschen Kategorie gibt es per Axiom einen Isomorphismus $\tau$, sodass $f = \im(f).\tau.\coim(f)$.
+\end{bem}
