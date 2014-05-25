@@ -90,3 +90,10 @@ Für jeden Pfeil $f$ gilt $\im(\im(f)) = \im(f)$.
 \begin{bem}[Epi-Mono-Faktorisierung]
 Für jeden Pfeil $f$ einer abelschen Kategorie gibt es per Axiom einen Isomorphismus $\tau$, sodass $f = \im(f).\tau.\coim(f)$.
 \end{bem}
+
+\begin{prop} \label{im-join-im-elim}
+Es gilt $\im(\join(\im(g),h)) = \im(\join(g,h))$ für alle Pfeile $g:X\to Z,h : Y\to Z$.
+\end{prop}
+\begin{bew}
+$\im(\join(\im(g),h)) = \im(\join(\im(g),h).\para(\coim(g),\id_Y)) = \im(\join(g,h))$
+\end{bew}

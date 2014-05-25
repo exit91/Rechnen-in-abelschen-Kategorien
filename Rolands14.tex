@@ -37,7 +37,7 @@ Unterobjekte und Quotientenobjekte stehen in enger Beziehung zueinander:
 \item $\coim(\coker(y').f) = \coker(\fib_1(f,y'))$ (d.h. $f^{op}(Y/Y') = X/f^{-1}(Y')$ mit Bild in $\mathcal A^{op}$)
 \item $\cofib_1(f,\coker(x')) = \coker(\im(f.x'))$ (d.h. $(f^{op})^{-1}(X/X') = Y/f(X')$ mit Urbild in $\mathcal A^{op}$)
 \end{enumerate}
-Siehe (Blatt 1, Warmup)
+Insbesondere können wir die Summe schreiben als $\im(\join(x_1,x_2)) = \ker(\cofib(\coker(x_1),\coker(x_2)))$.
 \end{prop}
 \begin{bew}
 %TODO
@@ -58,21 +58,29 @@ Es gelten $X_1 \cap X_2 = X_2 \cap X_1$
 sowie $X_1 + X_2 = X_2 + X_1$ als Unterobjekte.
 \end{lemm}
 \begin{bew}
-%TODO
-verwende das Reflexionsprinzip etc.
+Die erste Aussage folgt aus der Kommutativität des Faserprodukts, die zweite aus der ersten via Reflexionsprinzip:
+\begin{align*}
+   & \im(\join(x_1,x_2))
+\\=& \ker(\cofib(\coker(x_1),\coker(x_2)))
+\\=& \ker(\cofib(\coker(x_2),\coker(x_1)))
+\\=& \im(\join(x_2,x_1))
+\end{align*}
 \end{bew}
 
 \begin{lemm}[Regel (c)]
+\begin{enumerate}
+\item $\fib(x',\fib(x_1,x_2)) = \fib(\fib(x',x_1),x_2)$
+\item $\im(\join(x',\im(\join(x_1,x_2)))) = \im(\join(\im(\join(x',x_1)),x_2))$
+\end{enumerate}
 Es gelten $X' \cap (X_1 \cap X_2) = (X' \cap X_1) \cap X_2$ 
 sowie $X' + (X_1 + X_2) = (X' + X_1) + X_2$ als Unterobjekte.
 \end{lemm}
 \begin{bew}
 %TODO
-Formuliere universelle Eigenschaft für Dreifachschnitte bzw. Dreifachsummen, etc.
+Die erste Aussage folgt aus der Assoziativität des Faserprodukts und die zweite folgt aus der ersten via Reflexionsprinzip.
 \end{bew}
 
 \begin{lemm}[Regel (d)] $\quad$ % Zeilenumbruch
-% TODO: Prüfe auf Richtigkeit!
 \begin{enumerate}
 \item $\fib_1(g.f, z') = \fib_1(f, \fib_1(g, z'))$ (d.h. $(g.f)^{-1}(Z') = f^{-1}(g^{-1}(Z'))$)
 \item $\im(g.f.x') = \im(g.\im(f.x'))$ (d.h. $(g.f)(X') = g(f(X'))$)
@@ -152,11 +160,47 @@ Dann haben wir
 \\=& \im(\join(\im(f.x_1),\im(f.x_2)).\para(\varepsilon_1,\varepsilon_2))
 \\=& \im(\join(\im(f.x_1),\im(f.x_2))) \quad \text{(eliminiere den Epi)}
 \end{align*}
+
+Zur zweiten Gleichung:
+Vergleichen wir die linke Seite
+\begin{align*}
+   & \fib_1(f,\fib(y_1,y_2))
+\\=& \fib_1(f,y_1.\fib_1(y_1,y_2))
+\\=& \fib_1(f,y_1).\fib_1(\fib_2(f,y_1),\fib_1(y_1,y_2))
+\end{align*}
+mit der rechten
+\begin{align*}
+   & \fib(\fib_1(f,y_1),\fib_1(f,y_2))
+\\=& \fib_1(f,y_1).\fib_1(\fib_1(f,y_1),\fib_1(f,y_2)),
+\end{align*}
+so stellt sich heraus, dass wir nur
+\[ \fib_1(\fib_2(f,y_1),\fib_1(y_1,y_2)) = \fib_1(\fib_1(f,y_1),\fib_1(f,y_2)) \]
+zeigen müssen. Wegen $\fib_2(f,y_1) = \fib_1(y_1,f)$ folgt das aber aus der Assoziativität von Faserprodukten.
 \end{bew}
 
 \begin{lemm}[Regel (g), Projektionsformel] $\quad$ %Zeilenumbruch
 \begin{enumerate}
-\item $\fib_1(f,\im(\join(\im(f.x'),y'))) = \im(\join(x',\fib_1(f,y')))$
+\item $\fib_1(f,\im(\join(f.x',y'))) = \im(\join(x',\fib_1(f,y')))$
 \item $\im(f.\fib(\fib_1(f,y'),x')) = \fib(y',\im(f.x'))$
 \end{enumerate}
+Wegen Proposition \ref{im-join-im-elim} bedeutet die erste Gleichung $f^{-1}(f(X')+Y') = X' + f^{-1}(Y')$.
+Die zweite Gleichung besagt, dass $f(f^{-1}(Y')\cap X) = Y' \cap f(X')$.
 \end{lemm}
+\begin{bew}
+
+Zur ersten Gleichung:
+%TODO
+
+
+Zur zweiten Gleichung:
+Zunächst können wir den inneren Term $f.\fib(\fib_1(f,y'),y')$ als Faserprodukt auffassen:
+\begin{align*}
+   & f.\fib(\fib_1(f,y'),x')
+\\=& f.\fib_1(f,y').\fib_1(\fib_1(f,y'),x')
+\\=& y'.\fib_1(y',f).\fib_1(\fib_1(f,x'),x')
+\\=& y'.\fib_1(y',f.x')
+\\=& \fib(y',f.x')
+\end{align*}
+
+Nun folgt $\im(\fib(y',f.x')) = \fib(y',\im(f.x'))$ aus Regel (e), und wir sind fertig.
+\end{bew}

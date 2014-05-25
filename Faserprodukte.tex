@@ -32,6 +32,29 @@ Seien $f: X\to Y,g : Y\to Z,h:W\to Z$ Pfeile und (bla, Existenzaussage damit all
 \end{itemize}
 \end{satz}
 
+\begin{prop}[Kommutativität]
+Seien $f : X\to Z, g:Y\to Z$ Pfeile. Dann gilt
+\[ X\times_Z Y = Y\times_Z X \]
+mit $\fib_1(f,g) = \fib_2(g,f)$ und $\fib_2(f,g) = \fib_1(g,f)$.
+\end{prop}
+
+\begin{prop}[Assoziativität]
+Seien $f : W \to Z, g: X \to Z, h : Y\to Z$ Pfeile und $\{ \alpha, \beta, \gamma \} = \{ f,g,h\}$ eine beliebige Permutation dieser Pfeile. Dann gelten
+\[ \fib(\fib(f,g),\fib(f,h)) = \fib(\fib(\alpha,\beta),\fib(\alpha,\gamma)). \]
+Genauer haben wir sogar
+\[ \fib_1(\fib_1(f,g),\fib_1(f,h)) = \fib_1(\fib_1(g,f),\fib_1(g,h)) \]
+und schließlich gilt auch noch
+\[ \fib(\fib(f,g),h) = \fib(f,\fib(g,h)) \]
+\end{prop}
+
+\begin{korr}[Faserproduktwürfel]
+Im folgenden werden wir etwas Vorstellungskraft brauchen: Mit $E_{000},E_{001},...,E_{111}$ werden wir Objekte bezeichnen, die auf den Ecken eines Einheitsquadrats $[0,1]^3$ sitzen, nämlich an den Punkten $(0,0,0),(0,0,1),...(1,1,1)$.
+Gegeben seien drei Pfeile $f : E_{100} \to E_{110}, g : E_{111} \to E_{110}, h : E_{010} \to E_{110}$ gegeben. Die Behauptung ist nun, dass es möglich ist, jeder verbleibenden Kante genau einen Pfeil und jeder verbleibenden Ecke ein Objekt zuzuordnen, sodass auf jeder Seite des Würfels ein Faserproduktdiagramm steht.
+
+%TODO
+[Hier kommt eine nette Illustration hin]
+\end{korr}
+
 \begin{prop}
 Für $f: X\to Z, g:Y\to Z, h:Z\to Z'$ existiert ein eindeutiger Pfeil $\kappa : X\times_{f,Z,g} Y \to X\times_{h.f,Z,h.g} Y$ mit $\fib_i(f,g) = \fib_i(h.f,h.g).\kappa$ für $i=1,2$. Ist auch noch $h$ ein Mono, dann ist $\kappa$ ein Iso.
 \end{prop}
