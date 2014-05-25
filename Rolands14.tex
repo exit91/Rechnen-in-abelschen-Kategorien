@@ -196,9 +196,9 @@ Zur zweiten Gleichung:
 Zunächst können wir den inneren Term $f.\fib(\fib_1(f,y'),y')$ als Faserprodukt auffassen:
 \begin{align*}
    & f.\fib(\fib_1(f,y'),x')
-\\=& f.\fib_1(f,y').\fib_1(\fib_1(f,y'),x')
-\\=& y'.\fib_1(y',f).\fib_1(\fib_1(f,x'),x')
-\\=& y'.\fib_1(y',f.x')
+\\=& f.\fib_1(f,y').\fib_2(x',\fib_1(f,y'))
+\\=& y'.\fib_2(f,y').\fib_2(x',\fib_1(f,y'))
+\\=& y'.\fib_2(f.x',y')
 \\=& \fib(y',f.x')
 \end{align*}
 
