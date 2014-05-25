@@ -1,19 +1,19 @@
 \section{Faserprodukte (und Fasersummen)}
 
-Ein wenig Notation: Ich bezeichne für Pfeile $f : X\to Z, g: Y\to Z$ die Projektionen des Faserprodukts als $\fib(f,g)_1 : X\times_Z Y \to X$ und $\fib(f,g)_2 : X\times_Z Y \to Y$. Um etwas mit dieser Notation vertraut zu werden verwende ich sie gleich in der folgenden Definition.
-
+Ein wenig Notation: Ich bezeichne für Pfeile $f : X\to Z, g: Y\to Z$ die Projektionen des Faserprodukts als $\fib_1(f,g) : X\times_Z Y \to X$ und $\fib_2(f,g) : X\times_Z Y \to Y$. Weiter definiere $\fib(f,g) := f.\fib_1(f,g) = g.\fib_2(f,g)$.
 Für Fasersummen ersetze ich $\fib$ durch $\cofib$.
+Um etwas mit dieser Notation vertraut zu werden verwende ich sie gleich in der folgenden Definition.
 
 \begin{defn}[Universelle Eigenschaft des Faserprodukts]
-Seien $f:X\to Z, g:Y\to Z$ Pfeile, dann heißt das Tripel $(X\times_Z Y, \fib(f,g)_1, \fib(f,g)_2)$ bestehend aus einem Objekt und zwei Projektionen \emph{Faserprodukt}, falls:
+Seien $f:X\to Z, g:Y\to Z$ Pfeile, dann heißt das Tripel $(X\times_Z Y, \fib_1(f,g), \fib_2(f,g))$ bestehend aus einem Objekt und zwei Projektionen \emph{Faserprodukt}, falls:
 \begin{enumerate}
-\item $f.\fib(f,g)_1 = g.\fib(f,g)_2$
-\item Für jedes weitere Paar von Morphismen $\theta_1 : M \to X, \theta_2 : M \to X$ erhalten wir einen eindeutigen Pfeil $\mu : M \to X\times_Z Y$, sodass $\theta_i = \fib(f,g)_i . \mu$ für $i=1,2$.
+\item $f.\fib_1(f,g) = g.\fib_2(f,g)$
+\item Für jedes weitere Paar von Morphismen $\theta_1 : M \to X, \theta_2 : M \to X$ erhalten wir einen eindeutigen Pfeil $\mu : M \to X\times_Z Y$, sodass $\theta_i = \fib_i(f,g) . \mu$ für $i=1,2$.
 \end{enumerate}
 Dies definiert ein Faserprodukt eindeutig bis auf eindeutigen Iso.
 \end{defn}
 
-\begin{prop} Sei $\mathcal C$ eine Kategorie, $f : X \to Z, g : Y\to Z$ Morphismen sowie $X\times_Z Y$ deren Faserprodukt. Ist $g: Y\to Z$ ein Mono oder Iso, so ist auch die Projektion $\fib(f,g)_1: X\times_Z Y \to X$ ein Mono bzw. ein Iso.
+\begin{prop} Sei $\mathcal C$ eine Kategorie, $f : X \to Z, g : Y\to Z$ Morphismen sowie $X\times_Z Y$ deren Faserprodukt. Ist $g: Y\to Z$ ein Mono oder Iso, so ist auch die Projektion $\fib_1(f,g): X\times_Z Y \to X$ ein Mono bzw. ein Iso.
 \end{prop}
 
 \begin{korr}
@@ -21,13 +21,18 @@ Sei $\mathcal A$ eine abelsche Kategorie und
 $X_1 \hookr X$ und $X_2 \hookr X$ Monos in $\mathcal A$. Dann ist der induzierte Pfeil $X_1 \times_X X_2 \to X$ auch Mono als Komposition $X_1\times_X X_2 \hookr X_2 \hookr X$ von Monos.
 \end{korr}
 
-\begin{prop} Sei $\mathcal A$ eine abelsche Kategorie, $f : X \to Z, g : Y\to Z$ Morphismen. Ist $g: Y\to Z$ ein Epi, so ist auch die Projektion $\fib(f,g)_1: X\times_Z Y \to X$ ein Epi.
+\begin{prop} Sei $\mathcal A$ eine abelsche Kategorie, $f : X \to Z, g : Y\to Z$ Morphismen. Ist $g: Y\to Z$ ein Epi, so ist auch die Projektion $\fib_1(f,g): X\times_Z Y \to X$ ein Epi.
 \end{prop}
 
 \begin{satz}[Staffelung]
-Seien $f: X\to Y,g : Y\to Z,h:W\to Z$ Pfeile und (bla, Existenzaussage damit alle folgenden Faserprodukte definiert sind...). Dann ist $X\times_{g.f,Z,h} W = X\times_{f,Y,\fib(g,h)_1} (Y\times_{g,Z,h} W)$ und es gelten
+Seien $f: X\to Y,g : Y\to Z,h:W\to Z$ Pfeile und (bla, Existenzaussage damit alle folgenden Faserprodukte definiert sind...). Dann ist $X\times_{g.f,Z,h} W = X\times_{f,Y,\fib_1(g,h)} (Y\times_{g,Z,h} W)$ und es gelten
 \begin{itemize}
-\item $\fib(g.f,h)_1 = \fib(f,\fib(g,h)_1)_1$
-\item $\fib(g.f,h)_2 = \fib(g,h)_2 . \fib(f,\fib(g,h)_1)_2$
+\item $\fib_1(g.f,h) = \fib_1(f,\fib_1(g,h))$
+\item $\fib_2(g.f,h) = \fib_2(g,h) . \fib_2(f,\fib_1(g,h))$
 \end{itemize}
 \end{satz}
+
+\begin{prop}
+Für $f: X\to Z, g:Y\to Z, h:Z\to Z'$ existiert ein eindeutiger Pfeil $\kappa : X\times_{f,Z,g} Y \to X\times_{h.f,Z,h.g} Y$ mit $\fib_i(f,g) = \fib_i(h.f,h.g).\kappa$ für $i=1,2$. Ist auch noch $h$ ein Mono, dann ist $\kappa$ ein Iso.
+\end{prop}
+

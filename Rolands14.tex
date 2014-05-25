@@ -18,9 +18,9 @@ Weiter seien $f:X\to Y, g:Y\to Z$ Pfeile.
 \begin{defn}[Objektnotation]
 Wir definieren
 \begin{itemize}
-\item $X_1 \cap X_2 := X_1\times_Z X_2$ als Unterobjekt von $X$ via $x_1.\fib(x_1, x_2)_1$.
+\item $X_1 \cap X_2 := X_1\times_Z X_2$ als Unterobjekt von $X$ via $\fib(x_1, x_2)$.
 \item $X_1+X_2 = \Bild(X_1 \oplus X_2 \to X)$ als Unterobjekt von $X$ via $\im(\coprodop(x_1,x_2))$.
-\item $f^{-1}(Y') = X \times_{f,Y,y'} Y'$ als Unterobjekt von $X$ via $\fib(f,y')_1$
+\item $f^{-1}(Y') = X \times_{f,Y,y'} Y'$ als Unterobjekt von $X$ via $\fib_1(f,y')$
 \item $f(X') = \Bild(f.x')$ als Unterobjekt von $Y$ via $\im(f.x')$.
 \end{itemize}
 \end{defn}
@@ -32,10 +32,10 @@ Ohne Beweis habe ich oben angenommen, dass die vorkommenden Inklusionspfeile Mon
 \begin{prop}[Reflexionsprinzip]
 Unterobjekte und Quotientenobjekte stehen in enger Beziehung zueinander:
 \begin{enumerate}
-\item $\cofib(\coker(x_1), \coker(x_2)) = \coker(\coprodop(x_1,x_2))$, (d.h. $X/X_1 \cap X/X_2 = X/(X_1+X_2)$ mit Schnitt in $\mathcal A^{op}$)
+\item $\cofib(\coker(x_1), \coker(x_2)) = \coker(\im(\coprodop(x_1,x_2)))$, (d.h. $X/X_1 \cap X/X_2 = X/(X_1+X_2)$ mit Schnitt in $\mathcal A^{op}$)
 \item $\coim(\prodop(\coker(x_1),\coker(x_2))) = \coker(\fib(x_1,x_2))$ (d.h. $X/X_1 + X/X_2 = X/(X_1\cap X_2)$ mit Summe in $\mathcal A^{op}$)
-\item $\coim(\coker(y').f) = \coker(\fib(f,y'))$ (d.h. $f^{op}(Y/Y') = X/f^{-1}(Y')$ mit Bild in $\mathcal A^{op}$)
-\item $\cofib(f,\coker(x')) = \coker(\im(f.x'))$ (d.h. $(f^{op})^{-1}(X/X') = Y/f(X')$ mit Urbild in $\mathcal A^{op}$)
+\item $\coim(\coker(y').f) = \coker(\fib_1(f,y'))$ (d.h. $f^{op}(Y/Y') = X/f^{-1}(Y')$ mit Bild in $\mathcal A^{op}$)
+\item $\cofib_1(f,\coker(x')) = \coker(\im(f.x'))$ (d.h. $(f^{op})^{-1}(X/X') = Y/f(X')$ mit Urbild in $\mathcal A^{op}$)
 \end{enumerate}
 Siehe (Blatt 1, Warmup)
 \end{prop}
@@ -48,8 +48,8 @@ Beweise mich, ich bin nicht schwierig! (nur nervig!)
 \begin{enumerate}
 \item $\im(0_{0,X}) = 0_{0,X}$ (d.h. $f(0) = 0$)
 \item $\im(f.\id_X) = \im(f)$ (d.h. $f(X) = X$)
-\item $\fib(f,0_{0,Y})_1 = \ker(f)$ (d.h. $f^{-1}(0) = \Kern(f)$)
-\item $\fib(f,\id_Y)_1 = \id_X$ (d.h. $f^{-1}(Y) = X$)
+\item $\fib_1(f,0_{0,Y}) = \ker(f)$ (d.h. $f^{-1}(0) = \Kern(f)$)
+\item $\fib_1(f,\id_Y) = \id_X$ (d.h. $f^{-1}(Y) = X$)
 \end{enumerate}
 \end{lemm}
 
@@ -74,18 +74,70 @@ Formuliere universelle Eigenschaft für Dreifachschnitte bzw. Dreifachsummen, et
 \begin{lemm}[Regel (d)] $\quad$ % Zeilenumbruch
 % TODO: Prüfe auf Richtigkeit!
 \begin{enumerate}
-\item $\fib(g.f, z')_1 = \fib(f, \fib(g, z')_1)_1$ (d.h. $(g.f)^{-1}(Z') = f^{-1}(g^{-1}(Z'))$)
+\item $\fib_1(g.f, z') = \fib_1(f, \fib_1(g, z'))$ (d.h. $(g.f)^{-1}(Z') = f^{-1}(g^{-1}(Z'))$)
 \item $\im(g.f.x') = \im(g.\im(f.x'))$ (d.h. $(g.f)(X') = g(f(X'))$)
 \end{enumerate}
 \end{lemm}
 
 \begin{lemm}[Regel (e)]
 \[
-\im(f.\fib(f,y')_1) = \im(f).\fib(\im(f),y')_1
+\im(\fib(f,y')) = \fib(\im(f),y')
 \]
 und
 \[
-\fib(f,\im(f.x')) = \im(\coprodop(x', \ker(f)))
+\fib_1(f,\im(f.x')) = \im(\coprodop(x', \ker(f)))
 \]
 In Objektnotation heißt dies: $f(f^{-1}(Y')) = Y' \cap \Bild(f)$, bzw. $f^{-1}(f(X')) = X' + \Kern(f)$.
+\end{lemm}
+\begin{bew}
+Zur ersten Gleichung:
+Sei eine Epi-Mono-Zerlegung $f=\im(f).\varepsilon$ gegeben.
+Dann steht auf der linken Seite $\im(f.\fib_1(f,y')) = \im(\im(f).\varepsilon.\fib_1(f,y')) = \im(f).\im(\varepsilon.\fib_1(f,y'))$ und auf der rechten Seite $\im(f).\fib_1(\im(f),y')$. Es reicht also, zu zeigen, dass
+\[ \im(\varepsilon.\fib_1(f,y')) = \fib_1(\im(f),y'). \]
+Dazu schreiben wir erst $\varepsilon.\fib_1(f,y')$ um:
+\begin{align*}
+&\varepsilon.\fib_1(f,y')
+\\=& \varepsilon.\fib_1(\im(f).\varepsilon,y')
+\\=& \varepsilon.\fib_1(\varepsilon,\fib_1(\im(f),y'))
+\\=& \fib_1(\im(f),y').\fib_2(\varepsilon,\fib_1(\im(f),y'))
+\end{align*}
+Der letzte Term ist eine Komposition eines Monos mit einem Epi, d.h. nach Anwendung von $\im$ überlebt nur der Mono:
+\[ \im(\varepsilon.\fib_1(f,y')) = \fib_1(\im(f),y') \]
+was zu zeigen war.
+
+% Nun zur zweiten Gleichung:
+% Sei $f.x' = \im(f.x').\varepsilon$ eine Epi-Mono-Faktorisierung.
+% Dann faktorisiert $f.x' : X' \to Y$ über einen Pfeil $\theta : X' \to f^{-1}(f(X'))$ durch $\fib_1(f,\im(f.x'))$.
+% Ebenso gilt $f.\ker(f) = \im(f.x').0$, d.h. $f.\ker(f) : \Kern(f) \to Y$ faktorisiert über einen Pfeil $\tau : \Kern(f) \to f^{-1}(f(X'))$ durch $\fib_1(f,\im(f.x'))$.
+% Damit haben wir
+% \begin{align*}
+% \im(\coprodop(x',\ker(f)))
+% =& \im(\coprodop(\fib_1(f,\im(f.x')).\theta,\fib_1(f,\im(f.x')).\tau))
+% \\=& \im(\fib_1(f,\im(f.x')).\coprodop(\theta,\tau))
+% \\=& \fib_1(f,\im(f.x')).\im(\coprodop(\theta,\tau))
+% \end{align*}
+% 
+% % TODO: fix prooof
+% Die Pfeile $\theta$ und $\tau$ induzieren einen Pfeil $\gamma : f^{-1}(f(X')) \to X'\oplus \Kern(f)$, $\gamma.x'$ und $\gamma.\ker(f)$ die Inklusionen der Komponenten $X', \Kern(f)$ in die direkte Summe sind.
+% Nun prüfe die universelle Eigenschaft: Sei %TODO MÜÜÜÜDE
+% MÜÜDEEE
+% 
+% Da $\fib_1(f,\im(f.x')) = \coprodop(x',\ker(f)).\gamma$ gilt und der linke Pfeil in Mono ist, ist auch $\gamma$ ein Mono.
+% Nun gilt $\im(\coprod(x',\ker(f))) = \im(\coprodop(x',\ker(f)).\gamma) = \im(\fib_1(f,\im(f.x'))) = \fib_1(f,\im(f.x'))$, wie gewünscht.
+% 
+(Übung: Zeichne jeweils ein passendes kommutatives Diagramm. Das zweite könnte etwas wild werden.)
+\end{bew}
+
+\begin{lemm}[Regel (f)] $\quad$ %Zeilenumbruch
+\begin{enumerate}
+\item $\im(f.\im(\coprodop(x_1,x_2))) = \im(\coprodop(\im(f.x_1),\im(f.x_2)))$
+\item $\fib_1(f,\fib(y_1,y_2)) = \fib_1(f,y_1) . \fib_1(\fib_1(f,y_1),\fib_1(f,y_2))$
+\end{enumerate}
+\end{lemm}
+
+\begin{lemm}[Regel (g), Projektionsformel] $\quad$ %Zeilenumbruch
+\begin{enumerate}
+\item $\fib_1(f,\im(\coprodop(\im(f.x'),y'))) = \im(\coprodop(x',\fib_1(f,y')))$
+\item $\im(f.\fib(\fib_1(f,y'),x')) = \fib(y',\im(f.x'))$
+\end{enumerate}
 \end{lemm}

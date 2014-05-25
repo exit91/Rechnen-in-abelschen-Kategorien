@@ -25,7 +25,7 @@ Ein Pfeil $\alpha : X \epicr Y$ ist genau dann ein Epi, wenn $\coker(\alpha) = 0
 
 \begin{prop}
 Man kann Kerne als Faserprodukte ausdrücken. Sei $f : X\to Y$, dann gilt
-\[\ker(f) = \fib(f,0_{0,Y})_1 \]
+\[\ker(f) = \fib_1(f,0_{0,Y}) \]
 \end{prop}
 
 %%%%%%%%%%%
@@ -82,6 +82,10 @@ Monos sind Kerne und Kerne sind Monos.
 Ist $\beta$ ein Mono, so gilt $\beta = \im(\beta) = \ker(\coker(\beta))$.
 Jeder Kern ist Mono nach Proposition soundso.
 \end{bew}
+
+\begin{korr}[Idempotenz des Bildes/Cobildes]
+Für jeden Pfeil $f$ gilt $\im(\im(f)) = \im(f)$.
+\end{korr}
 
 \begin{bem}[Epi-Mono-Faktorisierung]
 Für jeden Pfeil $f$ einer abelschen Kategorie gibt es per Axiom einen Isomorphismus $\tau$, sodass $f = \im(f).\tau.\coim(f)$.
