@@ -11,9 +11,9 @@ Sei $\mathcal C$ eine Kategorie, $(Y_i)_{i\in I}$ eine Familie von Objekten und 
 \begin{prop} Die Projektionen sind Epis.
 \end{prop}
 
-Sei $X\in \mathcal C$ und $f_i : X \to Y_i$ Pfeile. Nach der universellen Eigenschaft des Produktes wird ein eindeutiger Pfeil $X \to \prod_i Y_i$ induziert, den ich mit $\prodop_i f_i$ bezeichne, sodass für alle $i\in I$ gilt: $f_i = \pi_j . \prodop_i f_i$. Alternativ kann man auch $\prodop(f_1,...,f_n)$ schreiben.
+Sei $X\in \mathcal C$ und $f_i : X \to Y_i$ Pfeile. Nach der universellen Eigenschaft des Produktes wird ein eindeutiger Pfeil $X \to \prod_i Y_i$ induziert, den ich mit $\fork_i f_i$ bezeichne, sodass für alle $i\in I$ gilt: $f_i = \pi_j . \fork_i f_i$. Alternativ kann man auch $\fork(f_1,...,f_n)$ schreiben.
 
-Im Falle von Coprodukten schreibt man $\coprodop_i f_i$ bzw. $\coprodop(f_1,...,f_n)$.
+Im Falle von Coprodukten schreibt man $\join_i f_i$ bzw. $\join(f_1,...,f_n)$.
 
 \begin{prop} Sei $u : W \to X$ ein Pfeil. Dann gilt $(\prod_i f_i) . u = \prod (f_i . u): W \to \prod_i Y_i$.
 \end{prop}
@@ -27,8 +27,26 @@ Im Falle von Coprodukten schreibt man $\coprodop_i f_i$ bzw. $\coprodop(f_1,...,
 Sei nun $\mathcal A$ eine abelsche Kategorie, $X,X_1,..X_n$ sowie $Y,Y_1,..Y_n$ Objekte und $f_i : X_i \to Y_i$ (für $i = 1,..n$) Pfeile.
 Für die direkten Summen $\bigoplus_i X_i$ bzw. $\bigoplus_i Y_i$ bezeichne die Inklusionen und Projektionen mit $\iota^X_j : X_j \to \bigoplus_i X_i$ und $\pi^X_j : \bigoplus_i X_i \to X_j$ bzw. $\iota^Y_j : Y_j \to \bigoplus_i Y_i$ und $\pi^Y_j : \bigoplus_i Y_i \to Y_j$.
 
-\begin{prop} Die $f_i$ induzieren eindeutig einen Pfeil $\bigoplus_i f_i : \bigoplus_i X_i \to \bigoplus_i Y_i$ mit $f_j = \pi^Y_j . \bigoplus_i f_i . \iota^X_j$ für alle $j$.
+\begin{prop} Die $f_i$ induzieren eindeutig einen Pfeil $\para_i f_i : \bigoplus_i X_i \to \bigoplus_i Y_i$ mit $f_j = \pi^Y_j . \para_i f_i . \iota^X_j$ für alle $j$.
 \end{prop}
 
-\begin{prop} Sind die $f_i$ Monos, so auch $\bigoplus_i f_i$.
+\begin{prop} Sind die $f_i$ Monos, Epis oder Isos, so entsprechend auch $\para_i f_i$.
+\end{prop}
+
+%%%%%%%%%%%
+\subsection{Fork, Join, Parallel}
+%%%%%%%%%%%
+
+%TODO. Namenswahl erklären
+
+Fork, Join und Par(allel) von Pfeilen hängen wie folgt zusammen:
+
+\begin{prop}
+Seien mit $f_i : V\to W_i, g_i : W_i \to X_i, h_i : X_i \to Y_i, k : Y_i \to Z$ für $i=1,...,n$ Pfeile bezeichnet.
+Es gelten
+\begin{enumerate}
+\item $\fork(g_1.f_1,...) = \para(g_1,...).\fork(f_1,...)$
+\item $\para(h_1.g_1,...) = \para(h_1,...).\para(g_1,...)$
+\item $\join(k_1.h_1,...) = \join(k_1,...).\para(h_1,...)$
+\end{enumerate}
 \end{prop}

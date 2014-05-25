@@ -19,7 +19,7 @@ Weiter seien $f:X\to Y, g:Y\to Z$ Pfeile.
 Wir definieren
 \begin{itemize}
 \item $X_1 \cap X_2 := X_1\times_Z X_2$ als Unterobjekt von $X$ via $\fib(x_1, x_2)$.
-\item $X_1+X_2 = \Bild(X_1 \oplus X_2 \to X)$ als Unterobjekt von $X$ via $\im(\coprodop(x_1,x_2))$.
+\item $X_1+X_2 = \Bild(X_1 \oplus X_2 \to X)$ als Unterobjekt von $X$ via $\im(\join(x_1,x_2))$.
 \item $f^{-1}(Y') = X \times_{f,Y,y'} Y'$ als Unterobjekt von $X$ via $\fib_1(f,y')$
 \item $f(X') = \Bild(f.x')$ als Unterobjekt von $Y$ via $\im(f.x')$.
 \end{itemize}
@@ -32,8 +32,8 @@ Ohne Beweis habe ich oben angenommen, dass die vorkommenden Inklusionspfeile Mon
 \begin{prop}[Reflexionsprinzip]
 Unterobjekte und Quotientenobjekte stehen in enger Beziehung zueinander:
 \begin{enumerate}
-\item $\cofib(\coker(x_1), \coker(x_2)) = \coker(\im(\coprodop(x_1,x_2)))$, (d.h. $X/X_1 \cap X/X_2 = X/(X_1+X_2)$ mit Schnitt in $\mathcal A^{op}$)
-\item $\coim(\prodop(\coker(x_1),\coker(x_2))) = \coker(\fib(x_1,x_2))$ (d.h. $X/X_1 + X/X_2 = X/(X_1\cap X_2)$ mit Summe in $\mathcal A^{op}$)
+\item $\cofib(\coker(x_1), \coker(x_2)) = \coker(\im(\join(x_1,x_2)))$, (d.h. $X/X_1 \cap X/X_2 = X/(X_1+X_2)$ mit Schnitt in $\mathcal A^{op}$)
+\item $\coim(\fork(\coker(x_1),\coker(x_2))) = \coker(\fib(x_1,x_2))$ (d.h. $X/X_1 + X/X_2 = X/(X_1\cap X_2)$ mit Summe in $\mathcal A^{op}$)
 \item $\coim(\coker(y').f) = \coker(\fib_1(f,y'))$ (d.h. $f^{op}(Y/Y') = X/f^{-1}(Y')$ mit Bild in $\mathcal A^{op}$)
 \item $\cofib_1(f,\coker(x')) = \coker(\im(f.x'))$ (d.h. $(f^{op})^{-1}(X/X') = Y/f(X')$ mit Urbild in $\mathcal A^{op}$)
 \end{enumerate}
@@ -91,7 +91,7 @@ Die zweite Gleichung folgt unmittelbar, wenn wir die Epi-Mono-Zerlegung $f.x' = 
 \]
 und
 \[
-\fib_1(f,\im(f.x')) = \im(\coprodop(x', \ker(f)))
+\fib_1(f,\im(f.x')) = \im(\join(x', \ker(f)))
 \]
 In Objektnotation heißt dies: $f(f^{-1}(Y')) = Y' \cap \Bild(f)$, bzw. $f^{-1}(f(X')) = X' + \Kern(f)$.
 \end{lemm}
@@ -117,10 +117,10 @@ was zu zeigen war.
 % Ebenso gilt $f.\ker(f) = \im(f.x').0$, d.h. $f.\ker(f) : \Kern(f) \to Y$ faktorisiert über einen Pfeil $\tau : \Kern(f) \to f^{-1}(f(X'))$ durch $\fib_1(f,\im(f.x'))$.
 % Damit haben wir
 % \begin{align*}
-% \im(\coprodop(x',\ker(f)))
-% =& \im(\coprodop(\fib_1(f,\im(f.x')).\theta,\fib_1(f,\im(f.x')).\tau))
-% \\=& \im(\fib_1(f,\im(f.x')).\coprodop(\theta,\tau))
-% \\=& \fib_1(f,\im(f.x')).\im(\coprodop(\theta,\tau))
+% \im(\join(x',\ker(f)))
+% =& \im(\join(\fib_1(f,\im(f.x')).\theta,\fib_1(f,\im(f.x')).\tau))
+% \\=& \im(\fib_1(f,\im(f.x')).\join(\theta,\tau))
+% \\=& \fib_1(f,\im(f.x')).\im(\join(\theta,\tau))
 % \end{align*}
 % 
 % % TODO: fix prooof
@@ -128,22 +128,35 @@ was zu zeigen war.
 % Nun prüfe die universelle Eigenschaft: Sei %TODO MÜÜÜÜDE
 % MÜÜDEEE
 % 
-% Da $\fib_1(f,\im(f.x')) = \coprodop(x',\ker(f)).\gamma$ gilt und der linke Pfeil in Mono ist, ist auch $\gamma$ ein Mono.
-% Nun gilt $\im(\coprod(x',\ker(f))) = \im(\coprodop(x',\ker(f)).\gamma) = \im(\fib_1(f,\im(f.x'))) = \fib_1(f,\im(f.x'))$, wie gewünscht.
+% Da $\fib_1(f,\im(f.x')) = \join(x',\ker(f)).\gamma$ gilt und der linke Pfeil in Mono ist, ist auch $\gamma$ ein Mono.
+% Nun gilt $\im(\coprod(x',\ker(f))) = \im(\join(x',\ker(f)).\gamma) = \im(\fib_1(f,\im(f.x'))) = \fib_1(f,\im(f.x'))$, wie gewünscht.
 % 
 (Übung: Zeichne jeweils ein passendes kommutatives Diagramm. Das zweite könnte etwas wild werden.)
 \end{bew}
 
 \begin{lemm}[Regel (f)] $\quad$ %Zeilenumbruch
 \begin{enumerate}
-\item $\im(f.\im(\coprodop(x_1,x_2))) = \im(\coprodop(\im(f.x_1),\im(f.x_2)))$
-\item $\fib_1(f,\fib(y_1,y_2)) = \fib_1(f,y_1) . \fib_1(\fib_1(f,y_1),\fib_1(f,y_2))$
+\item $\im(f.\im(\join(x_1,x_2))) = \im(\join(\im(f.x_1),\im(f.x_2)))$
+\item $\fib_1(f,\fib(y_1,y_2)) = \fib(\fib_1(f,y_1),\fib_1(f,y_2))$
 \end{enumerate}
+Das bedeutet gerade: $f(X_1 + X_2) = f(X_1) + f(X_2)$ und $f^{-1}(X_1\cap X_2) = f^{-1}(X_1) \cap f^{-1}(X_2)$.
 \end{lemm}
+\begin{bew}
+Zur ersten Gleichung: Seien $f.x_i = \im(f.x_i).\varepsilon_i$ ($i=1,2$) Epi-Mono-Zerlegungen.
+Dann haben wir
+\begin{align*}
+   & \im(f.\im(\join(x_1,x_2)))
+\\=& \im(f.\join(x_1,x_2)) \qquad \text{(nach (d))}
+\\=& \im(\join(f.x_1,f.x_2))
+\\=& \im(\join(\im(f.x_1).\varepsilon_1,\im(f.x_2).\varepsilon_2))
+\\=& \im(\join(\im(f.x_1),\im(f.x_2)).\para(\varepsilon_1,\varepsilon_2))
+\\=& \im(\join(\im(f.x_1),\im(f.x_2))) \quad \text{(eliminiere den Epi)}
+\end{align*}
+\end{bew}
 
 \begin{lemm}[Regel (g), Projektionsformel] $\quad$ %Zeilenumbruch
 \begin{enumerate}
-\item $\fib_1(f,\im(\coprodop(\im(f.x'),y'))) = \im(\coprodop(x',\fib_1(f,y')))$
+\item $\fib_1(f,\im(\join(\im(f.x'),y'))) = \im(\join(x',\fib_1(f,y')))$
 \item $\im(f.\fib(\fib_1(f,y'),x')) = \fib(y',\im(f.x'))$
 \end{enumerate}
 \end{lemm}
