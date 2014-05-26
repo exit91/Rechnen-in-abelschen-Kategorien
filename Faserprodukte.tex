@@ -1,6 +1,7 @@
 \section{Faserprodukte (und Fasersummen)}
 
 Ein wenig Notation: Ich bezeichne für Pfeile $f : X\to Z, g: Y\to Z$ die Projektionen des Faserprodukts als $\fib_1(f,g) : X\times_Z Y \to X$ und $\fib_2(f,g) : X\times_Z Y \to Y$. Weiter definiere $\fib(f,g) := f.\fib_1(f,g) = g.\fib_2(f,g)$.
+Es kommutieren also notwendigerweise die Argumente $\fib(f,g) = \fib(g,f)$.
 Für Fasersummen ersetze ich $\fib$ durch $\cofib$.
 Um etwas mit dieser Notation vertraut zu werden verwende ich sie gleich in der folgenden Definition.
 
@@ -14,6 +15,10 @@ Dies definiert ein Faserprodukt eindeutig bis auf eindeutigen Iso.
 \end{defn}
 
 \begin{prop} Sei $\mathcal C$ eine Kategorie, $f : X \to Z, g : Y\to Z$ Morphismen sowie $X\times_Z Y$ deren Faserprodukt. Ist $g: Y\to Z$ ein Mono oder Iso, so ist auch die Projektion $\fib_1(f,g): X\times_Z Y \to X$ ein Mono bzw. ein Iso.
+\end{prop}
+
+\begin{prop}
+Ein Spezialfall: $\fib_1(f,\id_Y) = f$ und $\fib_2(f,\id_Y) = \id_X$ für $f : X\to Y$.
 \end{prop}
 
 \begin{korr}
@@ -36,6 +41,7 @@ Seien $f: X\to Y,g : Y\to Z,h:W\to Z$ Pfeile und (bla, Existenzaussage damit all
 Seien $f : X\to Z, g:Y\to Z$ Pfeile. Dann gilt
 \[ X\times_Z Y = Y\times_Z X \]
 mit $\fib_1(f,g) = \fib_2(g,f)$ und $\fib_2(f,g) = \fib_1(g,f)$.
+An dieser Stelle ist es sinnvoll nochmal zu erwähnen, dass $\fib(f,g) = \fib(g,f)$.
 \end{prop}
 
 \begin{prop}[Assoziativität]
