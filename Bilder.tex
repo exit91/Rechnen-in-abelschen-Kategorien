@@ -7,23 +7,33 @@ Wir sind nun in einer abelschen Kategorie $\mathcal A$.
 %%%%%%%%%%%
 
 
-\begin{prop}
-Für $X,Y \in \mathcal A$ gelten
-\begin{enumerate}
-\item $\ker(0_{X,Y}) = \id_X$
-\item $\coker(0_{X,Y}) = \id_Y$
-\item $\ker(\id_Y) = 0_{0,Y}$
-\item $\coker(\id_X) = 0_{X,0}$
-\end{enumerate}
-\end{prop}
-
-\begin{prop}
+\begin{prop}\label{mono-kern-0}
 Ein Pfeil $\beta : Y \monicr Z$ ist genau dann ein Mono, wenn $\ker(\beta) = 0_{0,Y}$.
 
 Ein Pfeil $\alpha : X \epicr Y$ ist genau dann ein Epi, wenn $\coker(\alpha) = 0_{Y,0}$.
 \end{prop}
+\begin{bew}
+Ist $\beta$ ein Mono, dann gilt für jeden Pfeil $u$ mit $\beta.u = 0$, dass $\beta.u = 0 = \beta.0$, d.h. $u = 0$, was bedeutet, dass $u$ durch das Nullobjekt faktorisiert. 
+Umgekehrt sei $\ker(\beta) = 0_{0,Y}$ und $u,v$ Pfeile mit $\beta.u = \beta.v$. Dann folgt $0 = \beta.(u-v)$, d.h. $u-v$ faktorisiert durch den Kern, aber der war Null. Damit ist $u-v = 0$ und dementsprechend $u=v$.
+Der Beweis für Epis verläuft analog.
+\end{bew}
 
-\begin{prop}
+\begin{prop}\label{ker-examples}
+Für $X,Y \in \mathcal A$ gelten
+\begin{enumerate}
+\item $\ker(\id_Y) = 0_{0,Y}$
+\item $\coker(\id_X) = 0_{X,0}$
+\item $\ker(0_{X,Y}) = \id_X$
+\item $\coker(0_{X,Y}) = \id_Y$
+\end{enumerate}
+\end{prop}
+\begin{bew}
+$\id_Y$ ist ein Mono und $\id_X$ ein Epi. Aus Proposition \ref{mono-kern-0} folgen die ersten beiden Gleichungen. Die anderen beiden folgen direkt aus den UniEs von Kern und Cokern.
+\end{bew}
+
+
+
+\begin{prop}\label{ker-is-fibre}
 Man kann Kerne als Faserprodukte ausdrücken. Sei $f : X\to Y$, dann gilt
 \[\ker f = \fib_1(f,0_{0,Y}) \]
 Ist weiter $g : Y\to Z$ ein Pfeil, haben wir sogar
@@ -40,69 +50,92 @@ Aus der Staffelung von Faserprodukten folgt
 %%%%%%%%%%%
 
 \begin{defn}
-Sei $f : X\to Y$ ein Pfeil, dann bezeichnet man den Kern des Cokerns $\ker(\coker(f)) =: \im(f)$ als Bild von $f$
-und den Cokern des Kerns $\coker(\ker(f)) =: \coim(f)$ als Cobild von $f$.
+Sei $f : X\to Y$ ein Pfeil, dann bezeichnet man den Kern des Cokerns $\ker(\coker f) =: \im f$ als Bild von $f$
+und den Cokern des Kerns $\coker(\ker f) =: \coim(f)$ als Cobild von $f$.
 \end{defn}
 
-\begin{prop}
-Sei $f:X\to Y$ ein Pfeil, dann erfüllt jedes Bild $\im(f) =: g : B \to Y$ folgende UniE:
-Es gibt einen Pfeil $h : X \to B$, sodass $g.h = f$. Weiters gibts für jede Faktorisierung $f = m . e : X \to B' \to Y$ mit $m$ Mono einen eindeutigen Pfeil $\gamma : B \to B'$, sodass $h = m.\gamma$.
+\begin{prop}\label{unie-im}
+Sei $f:X\to Y$ ein Pfeil, dann erfüllt jedes Bild $\im f =: g : B \to Y$ folgende UniE:
+Es gibt einen Pfeil $h : X \to B$, sodass $g.h = f$. Weiters gibts für jede Faktorisierung $f = m . e : X \to B' \to Y$ mit $m$ Mono einen eindeutigen Pfeil $\gamma : B \to B'$, sodass $g = m.\gamma$.
 \end{prop}
 
-\begin{prop}
-Für $X,Y \in \mathcal A$ gelten
-\begin{enumerate}
-\item $\im(\id_X) = \id_X$
-\item $\coim(\id_Y) = \id_Y$
-\item $\im(0_{X,Y}) = 0_{0,Y}$
-\item $\coim(0_{X,Y}) = 0_{X,0}$
-\end{enumerate}
-\end{prop}
-
-
-\begin{prop}
+\begin{prop}\label{epi-mono-proj}
 Seien $\alpha : X \to Y, \beta : Y \monicr Z$ Pfeile und $\beta$ Mono.
-Dann gilt $\im(\beta.\alpha) = \beta.\im(\alpha)$.
+Dann gelten
+\[ \im(\beta.\alpha) = \beta.\im \alpha
+\quad\text{und}\quad
+\coim(\beta.\alpha) = \coim \alpha.\]
+Nun seien $\alpha' : X \epicr Y, \beta' : Y \to Z$ Pfeile und $\alpha'$ Epi.
+Dann gelten
+\[ \im(\beta'.\alpha') = \im \beta'
+\quad\text{und}\quad
+ \coim(\beta'.\alpha') = \coim \beta'.\alpha'.\]
 \end{prop}
+\begin{bew}
+Wir prüfen die UniE des Bildes (Proposition \ref{unie-im}).
+Nach UniE von $\alpha$ existiert ein Pfeil $e$ mit $\im \alpha.e = \alpha$.
+Dadurch erhalten wir $\beta.\im \alpha.e = \beta.\alpha$.
+Seien nun $a,b$ Pfeile, $b$ ein Mono, sodass $b.a = \beta . \alpha$.
 
 
-\begin{prop}
-Seien $\alpha : X \epicr Y, \beta : Y \to Z$ Pfeile und $\alpha$ Epi.
-Dann gilt $\im(\beta.\alpha) = \im(\beta)$.
-\end{prop}
+Die verbleibenden Aussagen sind lediglich die dualen Aussagen des bereits Bewiesenen.
+\end{bew}
+
 
 \begin{korr}
-Seien $\alpha : X \epicr Y, \beta : Y \monicr Z$, $\alpha$ Epi und $\beta$ Mono, dann gilt $\im(\beta.\alpha) = \beta$. Insbesondere gelten $\im(\beta) = \beta$ und $\im(\alpha) = \id_Y$.
+Für $X,Y \in \mathcal A$ gelten
+\begin{enumerate}
+\item $\im \id_X = \id_X$
+\item $\coim \id_Y = \id_Y$
+\item $\im 0_{X,Y} = 0_{0,Y}$
+\item $\coim 0_{X,Y} = 0_{X,0}$
+\end{enumerate}
 \end{korr}
 \begin{bew}
-$\im(\beta.\alpha) = \im(\beta) = \beta.\im(\id) = \beta$. Für die anderen Aussagen setzte jeweils $\alpha = \id_Y, X=Y$ bzw. $\beta = \id_Y, Y=Z$.
+Folgt direkt aus Proposition \ref{epi-mono-proj}.
+\end{bew}
+
+\begin{korr}
+Seien $\alpha : X \epicr Y, \beta : Y \monicr Z$, $\alpha$ Epi und $\beta$ Mono, dann gilt $\im(\beta.\alpha) = \beta$. Insbesondere gelten $\im \beta = \beta$ und $\im \alpha = \id_Y$.
+
+Dual dazu: $\coim(\beta.\alpha) = \alpha, \coim \alpha = \alpha, \coim \beta = \id_Y$.
+\end{korr}
+\begin{bew}
+$\im(\beta.\alpha) = \im \beta = \beta.\im \id = \beta$. Für die anderen beiden Aussagen setzte jeweils $\alpha = \id_Y, X=Y$ bzw. $\beta = \id_Y, Y=Z$.
+
+Für die duale Aussage dualisiere obigen Beweis.
 \end{bew}
 \begin{bem}
-Umgekehrt folgt aus $\im(\beta') = \beta'$ für einen Pfeil $\beta'$, dass $\beta'$ ein Mono ist, d.h.:
-Es ist $\beta$ genau dann Mono, wenn $\im(\beta) = \beta$
+Umgekehrt folgt aus $\im\beta' = \beta'$ für einen Pfeil $\beta'$, dass $\beta'$ ein Mono ist, d.h.:
+Es ist $\beta$ genau dann Mono, wenn $\im\beta = \beta$
 \end{bem}
 
 \begin{korr}
 Monos sind Kerne und Kerne sind Monos.
 \end{korr}
 \begin{bew}
-Ist $\beta$ ein Mono, so gilt $\beta = \im(\beta) = \ker(\coker(\beta))$.
-Jeder Kern ist Mono nach Proposition soundso.
+Ist $\beta$ ein Mono, so gilt $\beta = \im\beta = \ker(\coker\beta)$.
+Jeder Kern $\ker(f)$ ist Mono, denn nach Proposition \ref{ker-is-fibre} ist $\ker f = \fib_1(f,0_{0,Y})$.
+Der Pfeil $0_{0,Y}$ ist ein Mono wegen Proposition \ref{mono-kern-0} und Proposition \ref{ker-examples} und damit folgt aus Proposition \ref{fibre-mono}, dass auch $\fib_1(f,0_{0,Y})$ Mono ist.
 \end{bew}
 
 \begin{korr}[Idempotenz des Bildes/Cobildes]
-Für jeden Pfeil $f$ gilt $\im(\im(f)) = \im(f)$.
+Für jeden Pfeil $f$ gelten
+\[ \im(\im f) = \im f \quad\text{und}\quad \coim(\coim f) = \coim f \]
 \end{korr}
+\begin{bew}
+Wende \ref{epi-mono-proj} an.
+\end{bew}
 
 \begin{bem}[Epi-Mono-Faktorisierung]
-Für jeden Pfeil $f$ einer abelschen Kategorie gibt es per Axiom einen Isomorphismus $\tau$, sodass $f = \im(f).\tau.\coim(f)$.
-Man kann also $\im$ als Projektion eines Pfeils $f$ mit Epi-Mono-Faktorisierung $\mu.\varepsilon$ auf seine Mono-Komponente und $\coim$ als Projektion auf seine Epi-Komponente verstehen, denn $\im(f) = \mu$ und $\coim(f) = \varepsilon$.
+Für jeden Pfeil $f$ einer abelschen Kategorie gibt es per Axiom einen Isomorphismus $\tau$, sodass $f = \im f.\tau.\coim f$.
+Man kann also $\im$ als Projektion eines Pfeils $f$ mit Epi-Mono-Faktorisierung $\mu.\varepsilon$ auf seine Mono-Komponente und $\coim$ als Projektion auf seine Epi-Komponente verstehen, denn $\im f = \mu$ und $\coim f = \varepsilon$.
 
 \end{bem}
 
 \begin{prop} \label{im-join-im-elim}
-Es gilt $\im(\join(\im(g),h)) = \im(\join(g,h))$ für alle Pfeile $g:X\to Z,h : Y\to Z$.
+Es gilt $\im\join(\im(g),h) = \im\join(g,h)$ für alle Pfeile $g:X\to Z,h : Y\to Z$.
 \end{prop}
 \begin{bew}
-$\im(\join(\im(g),h)) = \im(\join(\im(g),h).\para(\coim(g),\id_Y)) = \im(\join(g,h))$
+$\im\join(\im g,h) = \im(\join(\im g,h).\para(\coim g,\id_Y)) = \im\join(g,h)$
 \end{bew}
