@@ -25,8 +25,15 @@ Ein Pfeil $\alpha : X \epicr Y$ ist genau dann ein Epi, wenn $\coker(\alpha) = 0
 
 \begin{prop}
 Man kann Kerne als Faserprodukte ausdrücken. Sei $f : X\to Y$, dann gilt
-\[\ker(f) = \fib_1(f,0_{0,Y}) \]
+\[\ker f = \fib_1(f,0_{0,Y}) \]
+Ist weiter $g : Y\to Z$ ein Pfeil, haben wir sogar
+\[ \ker(g.f) = \fib_1(g,\ker f) \]
 \end{prop}
+\begin{bew}
+Die UniEs von Kern und Faserprodukt stimmmen in diesem Fall überein, daher $\ker(f) = \fib_1(f,0_{0,Y})$.
+Aus der Staffelung von Faserprodukten folgt
+\[\ker(g.f) = \fib_1(g.f,0_{0,Y}) = \fib_1(g,\fib_1(f,0_{0,Y})) = \fib_1(g,\ker f)\]
+\end{bew}
 
 %%%%%%%%%%%
 \subsection{Bilder (und Cobilder)}
@@ -38,7 +45,7 @@ und den Cokern des Kerns $\coker(\ker(f)) =: \coim(f)$ als Cobild von $f$.
 \end{defn}
 
 \begin{prop}
-Sei $f:X\to Y$ ein Pfeil, dann erfüllt jedes Bild $\im(f) =: g : B \to Y$ folgende universelle Eigenschaft:
+Sei $f:X\to Y$ ein Pfeil, dann erfüllt jedes Bild $\im(f) =: g : B \to Y$ folgende UniE:
 Es gibt einen Pfeil $h : X \to B$, sodass $g.h = f$. Weiters gibts für jede Faktorisierung $f = m . e : X \to B' \to Y$ mit $m$ Mono einen eindeutigen Pfeil $\gamma : B \to B'$, sodass $h = m.\gamma$.
 \end{prop}
 
