@@ -29,33 +29,71 @@ Wir definieren
 Ohne Beweis habe ich oben angenommen, dass die vorkommenden Inklusionspfeile Monos sind, hier eine kurze Begründung: etc.pp. %TODO
 \end{bem}
 
+
+\begin{prop}[Ordnungsrelation auf Unterobjekten]
+...
+\end{prop}
+
+
+
 \begin{prop}[Reflexionsprinzip]
 Unterobjekte und Quotientenobjekte stehen in enger Beziehung zueinander:
-\begin{enumerate}
-\item $\cofib(\coker(x_1), \coker(x_2)) = \coker(\im(\join(x_1,x_2)))$, (d.h. $X/X_1 \cap X/X_2 = X/(X_1+X_2)$ mit Schnitt in $\mathcal A^{op}$)
-\item $\coim(\fork(\coker(x_1),\coker(x_2))) = \coker(\fib(x_1,x_2))$ (d.h. $X/X_1 + X/X_2 = X/(X_1\cap X_2)$ mit Summe in $\mathcal A^{op}$)
-\item $\coim(\coker(y').f) = \coker(\fib_1(f,y'))$ (d.h. $f^{op}(Y/Y') = X/f^{-1}(Y')$ mit Bild in $\mathcal A^{op}$)
-\item $\cofib_1(f,\coker(x')) = \coker(\im(f.x'))$ (d.h. $(f^{op})^{-1}(X/X') = Y/f(X')$ mit Urbild in $\mathcal A^{op}$)
-\end{enumerate}
-Insbesondere können wir die Summe schreiben als $\im(\join(x_1,x_2)) = \ker(\cofib(\coker(x_1),\coker(x_2)))$.
+
+\begin{tabular}{rll}
+   1.
+&  $\cofib(\coker(x_1), \coker(x_2)) = \coker(\im(\join(x_1,x_2)))$
+&  $X/X_1 \cap X/X_2 = X/(X_1+X_2)$ mit Schnitt in $\mathcal A^{op}$
+\\ 2.
+&  $\coim(\fork(\coker(x_1),\coker(x_2))) = \coker(\fib(x_1,x_2))$
+&  $X/X_1 + X/X_2 = X/(X_1\cap X_2)$ mit Summe in $\mathcal A^{op}$
+\\ 3.
+&  $\coim(\coker(y').f) = \coker(\fib_1(f,y'))$
+&  $f^{op}(Y/Y') = X/f^{-1}(Y')$ mit Bild in $\mathcal A^{op}$
+\\ 4.
+&  $\cofib_1(f,\coker(x')) = \coker(\im(f.x'))$
+&  $(f^{op})^{-1}(X/X') = Y/f(X')$ mit Urbild in $\mathcal A^{op}$
+\end{tabular}
+Insbesondere können wir die Summe schreiben als $\im\join(x_1,x_2)
+= \ker\cofib(\coker x_1,\coker x_2)$.
 \end{prop}
 \begin{bew}
 %TODO
 Beweise mich, ich bin nicht schwierig! (nur nervig!)
 \end{bew}
 
-\begin{lemm}[Regel (a)] $\quad$ % erzwinge Zeilenumbruch
-\begin{enumerate}
-\item $\im(0_{0,X}) = 0_{0,X}$ (d.h. $f(0) = 0$)
-\item $\im(f.\id_X) = \im(f)$ (d.h. $f(X) = X$)
-\item $\fib_1(f,0_{0,Y}) = \ker(f)$ (d.h. $f^{-1}(0) = \Kern(f)$)
-\item $\fib_1(f,\id_Y) = \id_X$ (d.h. $f^{-1}(Y) = X$)
-\end{enumerate}
+\begin{lemm}[Regel (a)]
+\ \linebreak
+
+\begin{tabular}{rll}
+   1.
+&  $\im(0_{0,X}) = 0_{0,X}$
+&  $f(0) = 0$
+\\ 2.
+&  $\im(f.\id_X) = \im(f)$
+&  $f(X) = X$
+\\ 3.
+&  $\fib_1(f,0_{0,Y}) = \ker(f)$
+&  $f^{-1}(0) = \Kern(f)$
+\\ 4.
+&  $\fib_1(f,\id_Y) = \id_X$
+&  $f^{-1}(Y) = X$
+\end{tabular}
 \end{lemm}
+\begin{bew}
+Siehe Proposition \ref{ker-examples}.
+\end{bew}
 
 \begin{lemm}[Regel (b)]
-Es gelten $X_1 \cap X_2 = X_2 \cap X_1$
-sowie $X_1 + X_2 = X_2 + X_1$ als Unterobjekte.
+\ \linebreak
+
+\begin{tabular}{rll}
+   1.
+&  $\fib(x_1,x_2) = \fib(x_2,x_1)$  
+&  $X_1 \cap X_2 = X_2 \cap X_1$
+\\ 2.
+&  $\im\join(x_1,x_2) = \im\join(x_2,x_1)$
+&  $X_1 + X_2 = X_2 + X_1$
+\end{tabular}
 \end{lemm}
 \begin{bew}
 Die erste Aussage folgt aus der Kommutativität des Faserprodukts, die zweite aus der ersten via Reflexionsprinzip:
@@ -68,23 +106,33 @@ Die erste Aussage folgt aus der Kommutativität des Faserprodukts, die zweite au
 \end{bew}
 
 \begin{lemm}[Regel (c)]
-\begin{enumerate}
-\item $\fib(x',\fib(x_1,x_2)) = \fib(\fib(x',x_1),x_2)$
-\item $\im(\join(x',\im(\join(x_1,x_2)))) = \im(\join(\im(\join(x',x_1)),x_2))$
-\end{enumerate}
-Es gelten $X' \cap (X_1 \cap X_2) = (X' \cap X_1) \cap X_2$ 
-sowie $X' + (X_1 + X_2) = (X' + X_1) + X_2$ als Unterobjekte.
+\ \linebreak
+
+\begin{tabular}{rll}
+   1.
+&  $\fib(x',\fib(x_1,x_2)) = \fib(\fib(x',x_1),x_2)$
+&  $X' \cap (X_1 \cap X_2) = (X' \cap X_1) \cap X_2$
+\\ 2.
+&  $\im(\join(x',\im(\join(x_1,x_2)))) = \im(\join(\im(\join(x',x_1)),x_2))$
+&  $X' + (X_1 + X_2) = (X' + X_1) + X_2$
+\end{tabular}
 \end{lemm}
 \begin{bew}
 %TODO
 Die erste Aussage folgt aus der Assoziativität des Faserprodukts und die zweite folgt aus der ersten via Reflexionsprinzip.
 \end{bew}
 
-\begin{lemm}[Regel (d)] $\quad$ % Zeilenumbruch
-\begin{enumerate}
-\item $\fib_1(g.f, z') = \fib_1(f, \fib_1(g, z'))$ (d.h. $(g.f)^{-1}(Z') = f^{-1}(g^{-1}(Z'))$)
-\item $\im(g.f.x') = \im(g.\im(f.x'))$ (d.h. $(g.f)(X') = g(f(X'))$)
-\end{enumerate}
+\begin{lemm}[Regel (d)]
+\ \linebreak
+
+\begin{tabular}{rll}
+   1.
+&  $\fib_1(g.f, z') = \fib_1(f, \fib_1(g, z'))$
+&  $(g.f)^{-1}(Z') = f^{-1}(g^{-1}(Z'))$
+\\ 2.
+&  $\im(g.f.x') = \im(g.\im(f.x'))$
+&  $(g.f)(X') = g(f(X'))$
+\end{tabular}
 \end{lemm}
 \begin{bew}
 Die erste Gleichung ist nur ein Spezialfall der Staffelung von Faserprodukten.
@@ -94,14 +142,16 @@ Die zweite Gleichung folgt unmittelbar, wenn wir die Epi-Mono-Zerlegung $f.x' = 
 \end{bew}
 
 \begin{lemm}[Regel (e)]
-\[
-\im(\fib(f,y')) = \fib(\im(f),y')
-\]
-und
-\[
-\fib_1(f,\im(f.x')) = \im(\join(x', \ker(f)))
-\]
-In Objektnotation heißt dies: $f(f^{-1}(Y')) = Y' \cap \Bild(f)$, bzw. $f^{-1}(f(X')) = X' + \Kern(f)$.
+\ \linebreak
+
+\begin{tabular}{rll}
+   1.
+&  $\im(\fib(f,y')) = \fib(\im(f),y')$
+&  $f(f^{-1}(Y')) = Y' \cap \Bild(f)$
+\\ 2.
+&  $\fib_1(f,\im(f.x')) = \im(\join(x', \ker(f)))$
+&  $f^{-1}(f(X')) = X' + \Kern(f)$
+\end{tabular}
 \end{lemm}
 \begin{bew}
 Zur ersten Gleichung:
@@ -141,12 +191,17 @@ Nach zweimaliger Anwendung des Reflexionsprinzips sind wir auch schon fertig:
 (Übung: Zeichne zum Beweis der ersten Aussage ein passendes kommutatives Diagramm.)
 \end{bew}
 
-\begin{lemm}[Regel (f)] $\quad$ %Zeilenumbruch
-\begin{enumerate}
-\item $\im(f.\im(\join(x_1,x_2))) = \im(\join(\im(f.x_1),\im(f.x_2)))$
-\item $\fib_1(f,\fib(y_1,y_2)) = \fib(\fib_1(f,y_1),\fib_1(f,y_2))$
-\end{enumerate}
-Das bedeutet gerade: $f(X_1 + X_2) = f(X_1) + f(X_2)$ und $f^{-1}(X_1\cap X_2) = f^{-1}(X_1) \cap f^{-1}(X_2)$.
+\begin{lemm}[Regel (f)]
+\ \linebreak
+
+\begin{tabular}{rll}
+   1.
+&  $\im(f.\im\join(x_1,x_2)) = \im\join(\im(f.x_1),\im(f.x_2))$
+&  $f(X_1 + X_2) = f(X_1) + f(X_2)$
+\\ 2.
+&  $\fib_1(f,\fib(y_1,y_2)) = \fib(\fib_1(f,y_1),\fib_1(f,y_2))$
+&  $f^{-1}(X_1\cap X_2) = f^{-1}(X_1) \cap f^{-1}(X_2)$
+\end{tabular}
 \end{lemm}
 \begin{bew}
 Zur ersten Gleichung: Seien $f.x_i = \im(f.x_i).\varepsilon_i$ ($i=1,2$) Epi-Mono-Zerlegungen.
@@ -177,11 +232,17 @@ so stellt sich heraus, dass wir nur
 zeigen müssen. Wegen $\fib_2(f,y_1) = \fib_1(y_1,f)$ folgt das aber aus der Assoziativität von Faserprodukten.
 \end{bew}
 
-\begin{lemm}[Regel (g), Projektionsformel] $\quad$ %Zeilenumbruch
-\begin{enumerate}
-\item $\fib_1(f,\im(\join(\im(f.x'),y'))) = \im(\join(x',\fib_1(f,y')))$ (d.h. $f^{-1}(f(X')+Y') = X' + f^{-1}(Y')$)
-\item $\im(f.\fib(\fib_1(f,y'),x')) = \fib(y',\im(f.x'))$ (d.h. $f(f^{-1}(Y')\cap X) = Y' \cap f(X')$)
-\end{enumerate}
+\begin{lemm}[Regel (g), Projektionsformel]
+\ \linebreak % Zeilenumbruch
+
+\begin{tabular}{rll}
+   1.
+&  $\fib_1(f,\im(\join(\im(f.x'),y'))) = \im(\join(x',\fib_1(f,y')))$
+&  $f^{-1}(f(X')+Y') = X' + f^{-1}(Y')$
+\\ 2.
+&  $\im(f.\fib(\fib_1(f,y'),x')) = \fib(y',\im(f.x'))$
+&  $f(f^{-1}(Y')\cap X) = Y' \cap f(X')$
+\end{tabular}
 \end{lemm}
 \begin{bew}
 
@@ -228,3 +289,119 @@ Alternativ definiere mit $f' = f.x' : X' \to Y$ die Einschränkung von $f$ auf $
 \\=& Y' \cap f(X')
 \end{align*}
 \end{bew}
+
+%%%%%%%%%%%%%%%%%
+% UNGLEICHUNGEN %
+%%%%%%%%%%%%%%%%%
+
+\begin{lemm}[Regel (h)]
+\ \linebreak
+
+\begin{tabular}{ll}
+$\im(f.x') \leq y' \Leftrightarrow x' \leq \fib_1(f,y')$
+& $f(X') \leq Y' \Leftrightarrow X' \leq f^{-1}(Y')$
+\end{tabular}
+\end{lemm}
+\begin{bew}
+\[ \im\join(x',0_{0,X}) = \ker\cofib(\coker x', \coker 0_{0,X})
+ = \ker\cofib(\coker x', \id_X) = \ker\coker x' = \im x' = x' \]
+Woraus wir $X' + 0 = X'$ erhalten.
+
+% TODO meh, we havent proven i/l up to this point
+Mit Regel (i) und Regel (l) folgern wir $X' = X' + 0 \leq X' + \Kern f = f^{-1}(f(X')) \leq f^{-1}(Y')$
+\end{bew}
+
+\begin{lemm}[Regel (i)]
+Angenommen $x_1 \leq x_2$. Dann gelten
+
+\begin{tabular}{rll}
+   1.
+&  $\fib(x_1,x') \leq \fib(x_2,x')$
+&  $X_1 \cap X' \leq X_2 \cap X'$
+\\ 2.
+&  $\im\join(x_1,x') \leq \im\join(x_2,x')$
+&  $X_1 + X' \leq X_2 + X'$
+\\ 3.
+&  $\im(f.x_1) \leq \im(f.x_2)$
+&  $f(X_1) \leq f(X_2)$
+\end{tabular}
+\end{lemm}
+\begin{bew}
+Seien $j$ ein Mono mit $x_1 = x_2.j$ sowie
+$f.x_2 = \im(f.x_2).\varepsilon$ und
+$\join(x_2,x') = \im\join(x_2,x').\varepsilon'$ Epi-Mono-Faktorisierungen.
+
+\begin{enumerate}
+\item
+\[ \fib(x_1,x') = \fib(x_2.j,x')
+%= x'.\fib_2(x_2.j,x')
+%= x'.\fib_2(x_2,x').\fib_2(j,\fib_1(x_2,x'))
+= \fib(x_2,x').\fib_2(j,\fib_1(x_2,x'))
+\]
+\item
+\[ \im\join(x_1,x')
+= \im\join(x_2.j,x')
+= \im(\join(x_2,x').\para(j,\id_{X'}))
+\]\[
+= \im\join(x_2,x').\im(\varepsilon'.\para(j,\id_{X'}))
+\]
+\item
+\[ \im(f.x_1) = \im(f.x_2.j) = \im(f.x_2).\im(\varepsilon.j) \]
+\end{enumerate}
+
+Da $\fib_2(j,\fib_1(x_2,x')), \im(\varepsilon'.\para(j,\id_{X'})), \im(\varepsilon.j)$ Monos sind, folgt die Behauptung.
+
+\end{bew}
+
+\begin{lemm}[Regel (j)]
+\ \linebreak
+
+\begin{tabular}{rll}
+   1.
+&  $x_1 \leq x' \wedge x_2 \leq x' \Leftrightarrow \im\join(x_1,x_2)\leq x'$
+&  $X_1 \leq X' \wedge X_2 \leq X' \Leftrightarrow X_1 + X_2 \leq X'$
+\\ 2.
+&  $x_1\leq x_2 \implies \im\join(x_1,x_2)\leq x_2$
+&  $X_1 \leq X_2 \implies X_1 + X_2 = X_2$
+\end{tabular}
+\end{lemm}
+\begin{bew}
+Zu 1: Für die Hinrichtung seien $j_1,j_2$ Monos mit $x_1 = x'.j_1$ und $x_2 = x'.j_2$.
+\[ \im\join(x_1,x_2) = \im\join(x'.j_1,x'.j_2) = x'.\im\join(j_1,j_2) \]
+Für die Rückrichtung sei ein Mono $j$ gegeben mit $\im\join(x_1,x_2) = x'.j$ und oBdA zeigen wir nur $x_1 \leq x'$.
+
+
+\end{bew}
+
+\begin{lemm}[Regel (k)]
+\ \linebreak
+
+\begin{tabular}{rll}
+   1.
+&  $x' \leq x_1 \wedge x' \leq x_2 \Leftrightarrow x' \leq \fib(x_1,x_2)$
+&  $X' \leq X_1 \wedge X' \leq X_2 \Leftrightarrow X' \leq X_1 \cap X_2$
+\\ 2.
+&  $x_1\leq x_2 \implies \fib(x_1,x_2)  = x_1$
+&  $X_1 \leq X_2 \implies X_1 \cap X_2 = X_1$
+\end{tabular}
+\end{lemm}
+
+\begin{lemm}[Regel (l)]
+\ \linebreak
+
+\begin{tabular}{ll}
+   $y_1 \leq y_2 \implies \fib_1(f,y_1) \leq \fib_1(f,y_2)$
+&  $Y_1 \leq Y_2 \implies f^{-1}(Y_1) \leq f^{-1}(Y_2)$
+\end{tabular}
+\end{lemm}
+
+\begin{lemm}[Regel (m)]
+\ \linebreak
+
+\begin{tabular}{ll}
+% TODO
+????
+   $x_2 \leq x_1 \implies $
+&  $X_2 \leq X_1 \implies X_1 \cap (X'+X_2) = (X_1\cap X') + X_2$
+\end{tabular}
+\end{lemm}
