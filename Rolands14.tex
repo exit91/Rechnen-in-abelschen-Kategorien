@@ -119,27 +119,26 @@ Der letzte Term ist eine Komposition eines Monos mit einem Epi, d.h. nach Anwend
 \[ \im(\varepsilon.\fib_1(f,y')) = \fib_1(\im(f),y') \]
 was zu zeigen war.
 
-% Nun zur zweiten Gleichung:
-% Sei $f.x' = \im(f.x').\varepsilon$ eine Epi-Mono-Faktorisierung.
-% Dann faktorisiert $f.x' : X' \to Y$ über einen Pfeil $\theta : X' \to f^{-1}(f(X'))$ durch $\fib_1(f,\im(f.x'))$.
-% Ebenso gilt $f.\ker(f) = \im(f.x').0$, d.h. $f.\ker(f) : \Kern(f) \to Y$ faktorisiert über einen Pfeil $\tau : \Kern(f) \to f^{-1}(f(X'))$ durch $\fib_1(f,\im(f.x'))$.
-% Damit haben wir
-% \begin{align*}
-% \im(\join(x',\ker(f)))
-% =& \im(\join(\fib_1(f,\im(f.x')).\theta,\fib_1(f,\im(f.x')).\tau))
-% \\=& \im(\fib_1(f,\im(f.x')).\join(\theta,\tau))
-% \\=& \fib_1(f,\im(f.x')).\im(\join(\theta,\tau))
-% \end{align*}
-% 
-% % TODO: fix prooof
-% Die Pfeile $\theta$ und $\tau$ induzieren einen Pfeil $\gamma : f^{-1}(f(X')) \to X'\oplus \Kern(f)$, $\gamma.x'$ und $\gamma.\ker(f)$ die Inklusionen der Komponenten $X', \Kern(f)$ in die direkte Summe sind.
-% Nun prüfe die universelle Eigenschaft: Sei %TODO MÜÜÜÜDE
-% MÜÜDEEE
-% 
-% Da $\fib_1(f,\im(f.x')) = \join(x',\ker(f)).\gamma$ gilt und der linke Pfeil in Mono ist, ist auch $\gamma$ ein Mono.
-% Nun gilt $\im(\coprod(x',\ker(f))) = \im(\join(x',\ker(f)).\gamma) = \im(\fib_1(f,\im(f.x'))) = \fib_1(f,\im(f.x'))$, wie gewünscht.
-% 
-(Übung: Zeichne jeweils ein passendes kommutatives Diagramm. Das zweite könnte etwas wild werden.)
+Nun zur zweiten Gleichung:
+Sei $f = \mu.\varepsilon$ eine Epi-Mono-Zerlegung. Dann haben wir für die linke Seite
+\[ \fib_1(\mu.\varepsilon,\im(\mu.\varepsilon.x')) = \fib_1(\mu.\varepsilon, \mu.\im(\varepsilon.x')) = \fib_1(\varepsilon, \im(\varepsilon.x')) \]
+und für die rechte Seite
+\[ \im(\join(x',\ker(\mu.\varepsilon))) = \im(\join(x',\im(\ker(\mu.\varepsilon))))
+= \im(\join(x',\ker(\varepsilon))) \]
+Das bedeutet, dass wir oBdA annehmen können, dass $f$ ein Epi ist.
+Nach zweimaliger Anwendung des Reflextionsprinzips sind wir auch schon fertig:
+\begin{align*}
+   & \im(\join(x',\ker f))
+\\=& \ker(\cofib(\coker x', (\coker . \ker) f)) \qquad\text{(Reflextionsprinzip)}
+\\=& \ker(\cofib(\coker x', f) \qquad \text{($f$ ist Epi, d.h. $\coim(f) = f$)}
+\\=& \ker(\cofib_2(\coker x', f).f)
+\\=& \ker(\coker(\im(f.x').f)) \qquad \text{(Reflexionsprinzip)}
+\\=& \fib_1(f,(\ker.\coker.\im)(f.x')) \qquad \text{(Regel (d).1)}
+\\=& \fib_1(f,\im(f.x'))
+\end{align*}
+
+ 
+(Übung: Zeichne zum Beweis der ersten Aussage ein passendes kommutatives Diagramm.)
 \end{bew}
 
 \begin{lemm}[Regel (f)] $\quad$ %Zeilenumbruch
@@ -180,17 +179,32 @@ zeigen müssen. Wegen $\fib_2(f,y_1) = \fib_1(y_1,f)$ folgt das aber aus der Ass
 
 \begin{lemm}[Regel (g), Projektionsformel] $\quad$ %Zeilenumbruch
 \begin{enumerate}
-\item $\fib_1(f,\im(\join(f.x',y'))) = \im(\join(x',\fib_1(f,y')))$
-\item $\im(f.\fib(\fib_1(f,y'),x')) = \fib(y',\im(f.x'))$
+\item $\fib_1(f,\im(\join(\im(f.x'),y'))) = \im(\join(x',\fib_1(f,y')))$ (d.h. $f^{-1}(f(X')+Y') = X' + f^{-1}(Y')$)
+\item $\im(f.\fib(\fib_1(f,y'),x')) = \fib(y',\im(f.x'))$ (d.h. $f(f^{-1}(Y')\cap X) = Y' \cap f(X')$)
 \end{enumerate}
-Wegen Proposition \ref{im-join-im-elim} bedeutet die erste Gleichung $f^{-1}(f(X')+Y') = X' + f^{-1}(Y')$.
-Die zweite Gleichung besagt, dass $f(f^{-1}(Y')\cap X) = Y' \cap f(X')$.
 \end{lemm}
 \begin{bew}
 
 Zur ersten Gleichung:
-%TODO
+Definiere $q = \coker(y') : Y \to Y/Y'$, dann haben wir
+\begin{align*}
+   & f^{-1}(f(X') + Y')
+\\=& f^{-1}(q^{-1}(q(f(X')))) \qquad \text{(Regel (e))}
+\\=& (q.f)^{-1}((q.f)(X')) \qquad \text{(Regel (d))}
+\\=& X' + \Kern(q.f) \qquad\text{(Regel (e))}
+\\=& X' + f^{-1}(Y') \qquad\text{(Regel (d) und $\Kern(q) = Y'$)}
+\end{align*}
 
+Ein Beweis im hier üblichen Kalkül möchte ich auch noch angeben:
+\begin{align*}
+   & \fib_1(f, \im(\join(\im(f.x'),y')))
+\\=& \fib_1(f, \im(\join(\im(f.x'),\ker(q))))
+\\=& \fib_1(f, \fib_1(q,\im(q.\im(f.x'))))
+\\=& \fib_1(f, \fib_1(q,\im(q.f.x')))
+\\=& \fib_1(q.f, \im(q.f.x'))
+\\=& \im(\join(x',\ker(q.f)))
+\\=& \im(\join(x',\fib_1(f,y')))
+\end{align*}
 
 Zur zweiten Gleichung:
 Zunächst können wir den inneren Term $f.\fib(\fib_1(f,y'),y')$ als Faserprodukt auffassen:
@@ -203,4 +217,14 @@ Zunächst können wir den inneren Term $f.\fib(\fib_1(f,y'),y')$ als Faserproduk
 \end{align*}
 
 Nun folgt $\im(\fib(y',f.x')) = \fib(y',\im(f.x'))$ aus Regel (e), und wir sind fertig.
+
+Alternativ definiere mit $f' = f.x' : X' \to Y$ die Einschränkung von $f$ auf $X'$.
+
+\begin{align*}
+   & f(f^{-1}(Y')\cap X')
+\\=& f(x'(f'^{-1}(Y'))) \qquad\text{(Regel (d) mit $x'^{-1}(X'_1) = X' \cap X'1$)}
+\\=& f'(f'^{-1}(Y')))
+\\=& Y' \cap \Bild(f') \qquad\text{(Regel (e))}
+\\=& Y' \cap f(X')
+\end{align*}
 \end{bew}
