@@ -59,7 +59,7 @@ Sei $f:X\to Y$ ein Pfeil, dann erfüllt jedes Bild $\im f =: g : B \to Y$ folgen
 Es gibt einen Pfeil $h : X \to B$, sodass $g.h = f$. Weiters gibts für jede Faktorisierung $f = m . e : X \to B' \to Y$ mit $m$ Mono einen eindeutigen Pfeil $\gamma : B \to B'$, sodass $g = m.\gamma$.
 \end{prop}
 
-\begin{prop}\label{epi-mono-proj}
+\begin{satz}\label{epi-mono-proj}
 Seien $\alpha : X \to Y, \beta : Y \monicr Z$ Pfeile und $\beta$ Mono.
 Dann gelten
 \[ \im(\beta.\alpha) = \beta.\im \alpha
@@ -70,7 +70,7 @@ Dann gelten
 \[ \im(\beta'.\alpha') = \im \beta'
 \quad\text{und}\quad
  \coim(\beta'.\alpha') = \coim \beta'.\alpha'.\]
-\end{prop}
+\end{satz}
 \begin{bew}
 Wir prüfen die UniE des Bildes (Proposition \ref{unie-im}).
 Nach UniE von $\alpha$ existiert ein Pfeil $e$ mit $\im \alpha.e = \alpha$.
@@ -92,7 +92,7 @@ Für $X,Y \in \mathcal A$ gelten
 \end{enumerate}
 \end{korr}
 \begin{bew}
-Folgt direkt aus Proposition \ref{epi-mono-proj}.
+Folgt direkt aus Satz \ref{epi-mono-proj}.
 \end{bew}
 
 \begin{korr}
@@ -124,7 +124,7 @@ Für jeden Pfeil $f$ gelten
 \[ \im(\im f) = \im f \quad\text{und}\quad \coim(\coim f) = \coim f \]
 \end{korr}
 \begin{bew}
-Wende Proposition \ref{epi-mono-proj} an.
+Wende Satz \ref{epi-mono-proj} an.
 \end{bew}
 
 \begin{bem}[Epi-Mono-Faktorisierung]

@@ -1,0 +1,92 @@
+\section{2-Komplexe}
+
+%TODO: Alles auf 2-Komplexe ummünzen
+
+\begin{defn}
+Sei $\mathcal C$ eine Kategorie und $p : X_2 \to X_1, q: Y_2 \to Y_1$ Pfeile, welche wir im folgenden als Paare bezeichnen und $p =: (X_1,X_2), q =: (Y_1,Y_2)$ schreiben.
+Wir nennen jedes Paar von Pfeilen $f_1 : X_1 \to Y_1, f_2 : X_2 \to Y_2$ einen \emph{Pfeil von Paaren $(X_1,X_2),(Y_1,Y_2)$} und schreiben $(f_1,f_2) : (X_1,X_2) \to (Y_1,Y_2)$, falls gilt folgende Verträglichkeit erfüllt ist:
+\[ f_1 . p = q . f_2 \]
+\end{defn}
+
+\begin{prop}
+Sind $(f_1,f_2) : (X_1,X_2) \to (Y_1,Y_2)$ und $(g_1,g_2) : (Y_1,Y_2) \to (Z_1,Z_2)$ Pfeile von Paaren, dann auch $(g_1.f_1, g_2.f_2) =: (g_1,g_2).(f_1,f_2)$.
+Insbesondere gilt $(f_1,f_2).(\id_{X_1},\id_{X_2}) = (f_1,f_2) = (\id_{Y_1},\id_{Y_2}).(f_1,f_2) $.
+\end{prop}
+\begin{bew}
+Seien $x : X_2 \to X_1, y:Y_2 \to Y_1, z : Z_2 \to Z_2$ die zu den Paaren assoziierten Pfeile.
+Dann gilt $g_1.f_1 . x = g_1.y.f_2 = z.g_2.f_2$.
+\end{bew}
+
+\begin{bem}
+Damit erhalten wir für eine Kategorie $\mathcal C$ eine Kategorie $Paar(\mathcal C)$ mit Paaren (also Elementen aus $Mor(\mathcal C)$) als Objekte und Pfeile von Paaren als Pfeile.
+Weiter können wir die vollen Unterkategorien $MonoPaar(\mathcal C)$, deren Objekte die Monos von $Mor(\mathcal C)$ sind, und $EpiPaar(\mathcal C)$, deren Objekte die Epis von $Mor(\mathcal C)$ sind, definieren.
+\end{bem}
+
+\begin{prop}
+Sei $\mathcal A$ eine abelsche Kategorie und $x' : X'\monicr X$ sowie $y' : Y' \monicr Y$ Monos.
+Sei nun $(f,f') : (X,X')\to (Y,Y')$ ein Pfeil von Paaren.
+Dann existiert genau ein Pfeil $\bar f : X/X' \to Y/Y'$, sodass $\bar f . \coker(x') = \coker(y') . f$, d.h. $(\bar f, f) : (X/X', X) \to (Y/Y', Y)$ ist ein Pfeil von Paaren.
+
+Sind umgekehrt $\bar x : X \epicr \bar X, \bar y : Y \epicr \bar Y$ Epis und ein Pfeil von Paaren $(\bar f, f)  : (\bar X,X) \to (\bar Y, Y)$ gegeben, so erhalten wir eindeutig einen Pfeil von Paaren $(f,f') : (X,\Kern(\bar x)) \to (Y,\Kern(\bar y))$.
+\end{prop}
+\begin{bew}
+Es gilt $(\coker(y').f).x' = 0_{X,Y/Y'}.x'$:
+\[
+\coker(y').f.x' = \coker(y').y'.f' = 0_{X',Y/Y'}
+\]
+Nach UniE von $\coker(x')$ gibt es genau einen Pfeil $\bar f : X/X' \to Y/Y'$ mit
+\[ \bar f . \coker(x') = \coker(y') . f \]
+
+Für die Umkehrung betrachte $\bar y.(f.\ker(\bar x)) = \bar f . \bar x . \ker(\bar x) = 0_{X',\bar Y}$, daher existiert nach UniE von $\ker(\bar y)$ genau ein Pfeil $f' : \Kern(\bar x) \to \Kern(\bar y)$ mit 
+\[ f.\ker(\bar x) = \ker(\bar y).f' \]
+\end{bew}
+
+\begin{bem}
+Erinnern wir uns mal daran, dass in abelschen Kategorien Monos genau die Kerne und Epis genau die Cokerne sind. Daher gibt uns die obige Proposition eine Äquivalenz der Kategorien $MonoPaar(\mathcal A)$ und $EpiPaar(\mathcal A)$ für eine abelsche Kategorie $\mathcal A$.
+\end{bem}
+
+\begin{defn}[Objektordnung]
+Sei $\mathcal C$ eine Kategorie.
+Wir definieren eine Relation $\leq$ auf Unterobjekten von einem festen $X \in \mathcal C$ wie folgt: Für Unterobjekte $x_1 : X_1 \monicr X, x_2 : X_2 \monicr X$ sei
+\[ x_1 \leq x_2 \Leftrightarrow \exists (j:  X_1 \to X_2) : x_1 = x_2 . j \]
+Existiert solch ein $j$, so ist es notwendigerweise ein Mono.
+
+Auf Quotientenobjekten können wir eine Relation $\leq^{op}$ definieren:
+Für Quotientenobjekte $x^1 : X \epicr X^1, x^2 : X \epicr X^2$ sei
+\[ x^1 \leq^{op} x^2 \Leftrightarrow \exists (k : X^2 \to X^1) : x^1 = k . x^2 \]
+Jedes solche $k$ muss ein Epi sein.
+\end{defn}
+
+\begin{lemm}
+Mit $\leq$ und $\leq^{op}$ haben wir eine Ordnungsrelationen auf der Menge der Unterobjekte, bzw. Quotientenobjekte von $X$ definiert.
+\end{lemm}
+\begin{bew}
+Ich führe den Beweis nur für $\leq$:
+Es seien $x_i : X_i \monicr X_i, i=1,2,3$ Unterobjekte.
+Die Relation ist reflexiv, denn $x_1 = x_1.\id_{X_1}$; sie ist transitiv, denn für $x_1 \leq x_2 \leq x_3$ erhalten wir Pfeile $j,j'$ mit $x_1 = x_2.j$ und $x_2 = x_3.j'$, also insgesamt $x_1 = x_3.(j'.j)$.
+Für Antisymmetrie nehmen $x_1 \leq x_2$ und $x_2 \leq x_1$ an und erhalte Pfeile $j,j'$ mit $x_1 = x_2.j$ sowie $x_2 = x_1.j'$. Da $x_1,x_2$ Monos sind folgt dass $j$ ein Iso ist:
+\[ x_1 . \id_{X_1} = x_1.(j'.j) \implies j'.j = \id_{X_1} \]
+\[ x_2 . \id_{X_2} = x_2.(j.j') \implies j.j' = \id_{X_2} \]
+Damit definieren $x_1$ und $x_2$ das gleiche Unterobjekt.
+
+\end{bew}
+
+\begin{korr}\label{antitonic}
+Obige Äquivalenz von Kategorien ist ordnungserhaltend, womit folgendes gemeint ist: Sind $X_1 \monicr X, X_2 \monicr X$ Unterobjekte von $X$, dann gilt
+\[ X_1 \leq X_2 \Leftrightarrow X/X_2 \leq^{op} X/X_1, \]
+\end{korr}
+\begin{bew}
+\begin{align*}
+                 & X_1 \leq X_2
+\\\Leftrightarrow& \exists j : (\id_X,j) : (X,X_1) \to (X,X_2) \text{ ist Pfeil von 2-Komplexen}
+\\\Leftrightarrow& \exists k : (k,\id_X) : (X/X_1,X) \to (X/X_2,X) \text{ ist Pfeil von 2-Komplexen}
+\\\Leftrightarrow& X/X_2 \leq^{op} X/X_1
+\end{align*}
+\end{bew}
+
+
+\begin{prop}
+Seien 2-Komplexe $X' \monicr X$ und $Y' \monicr Y$ sowie $f : X \to Y$ gegeben. Dann existiert genau ein $f' : X' \to Y'$, sodass $(f,f') : (X,X') \to (Y,Y')$ ein Pfeil von 2-Komplexen ist, falls $f(X') \leq Y'$.
+
+Dual dazu: Sind 2-Komplexe $X \epicr X/X'$ und $Y \epicr Y/Y'$ sowie $f : X\to Y$ gegeben. Dann existiert genau ein $\bar f : X/X' \to Y/Y'$, sodass $(\bar f, f) : (X/X',X) \to (Y/Y',Y)$ ein Pfeil von 2-Komplexen ist, falls $X' \leq f^{-1}(Y')$.
+\end{prop}

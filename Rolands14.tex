@@ -29,13 +29,6 @@ Wir definieren
 Ohne Beweis habe ich oben angenommen, dass die vorkommenden Inklusionspfeile Monos sind, hier eine kurze Begründung: etc.pp. %TODO
 \end{bem}
 
-
-\begin{prop}[Ordnungsrelation auf Unterobjekten]
-...
-\end{prop}
-
-
-
 \begin{prop}[Reflexionsprinzip]
 Unterobjekte und Quotientenobjekte stehen in enger Beziehung zueinander:
 
@@ -307,8 +300,16 @@ $\im(f.x') \leq y' \Leftrightarrow x' \leq \fib_1(f,y')$
  = \ker\cofib(\coker x', \id_X) = \ker\coker x' = \im x' = x' \]
 Woraus wir $X' + 0 = X'$ erhalten.
 
-% TODO meh, we havent proven i/l up to this point
-Mit Regel (i) und Regel (l) folgern wir $X' = X' + 0 \leq X' + \Kern f = f^{-1}(f(X')) \leq f^{-1}(Y')$
+Mit Regel (i) und Regel (l) (die ich noch zeigen werde) folgern wir $X' = X' + 0 \leq X' + \Kern f = f^{-1}(f(X')) \leq f^{-1}(Y')$
+
+Die Umkehrrichtung beweisen wir durch Übergang in die Quotienten, wobei wir
+die Ordnungserhaltung (Proposition \ref{antitonic}) ausschöpfen:
+\begin{align*}
+                  & X' \leq f^{-1}(Y')
+\\\Leftrightarrow & f^{op}(Y/Y') \leq X/X'
+\\\Rightarrow     & Y/Y' \leq (f^{op})^{-1}(X/X') = Y/f(X') \qquad\text{(Reflexionsprinzip und obige Implikation)}
+\\\Leftrightarrow & f(X') \leq Y'
+\end{align*}
 \end{bew}
 
 \begin{lemm}[Regel (i)]
@@ -366,11 +367,7 @@ Da $\fib_2(j,\fib_1(x_2,x')), \im(\varepsilon'.\para(j,\id_{X'})), \im(\varepsil
 \end{tabular}
 \end{lemm}
 \begin{bew}
-Zu 1: Für die Hinrichtung seien $j_1,j_2$ Monos mit $x_1 = x'.j_1$ und $x_2 = x'.j_2$.
-\[ \im\join(x_1,x_2) = \im\join(x'.j_1,x'.j_2) = x'.\im\join(j_1,j_2) \]
-Für die Rückrichtung sei ein Mono $j$ gegeben mit $\im\join(x_1,x_2) = x'.j$ und oBdA zeigen wir nur $x_1 \leq x'$.
-
-
+Siehe Beweis von Regel (k).
 \end{bew}
 
 \begin{lemm}[Regel (k)]
@@ -385,6 +382,28 @@ Für die Rückrichtung sei ein Mono $j$ gegeben mit $\im\join(x_1,x_2) = x'.j$ u
 &  $X_1 \leq X_2 \implies X_1 \cap X_2 = X_1$
 \end{tabular}
 \end{lemm}
+\begin{bew}
+Ich beweise die Regeln (j) und (k) in einem Rutsch.
+
+Zu (j).1 \glqq$\Rightarrow$\grqq: Seien $j_1,j_2$ Monos mit $x_1 = x'.j_1$ und $x_2 = x'.j_2$.
+\[ \im\join(x_1,x_2) = \im\join(x'.j_1,x'.j_2) = x'.\im\join(j_1,j_2) \]
+
+Zu (k).1 \glqq$\Rightarrow$\grqq: Seien $j_1,j_2$ Monos mit $x'=x_1.j_1=x_2.j_2$.
+Wegen Proposition \ref{more-fib-calculations} gilt
+Definiere nun Monos \[ k_1 := \fib_2(j_1,\fib_1(x_1,x')) \quad
+k_2 := \fib_2(j_2,\fib_1(x_1,x_2)) \]
+Diese erfüllen nun, wie sich leicht nachrechnen lässt,
+\[ \fib(x_1,x_2).(k_2.k_1) = \fib(x_1,x').k_1 = \fib(x',x') \]
+
+Zu (j).1 \glqq$\Leftarrow$\grqq: Folgt aus (k).1  \glqq$\Rightarrow$\grqq (gehe in Quotientenobjekte über)
+
+Zu (k).1 \glqq$\Leftarrow$\grqq: Folgt aus (j).1 \glqq$\Rightarrow$\grqq (gehe in Quotientenobjekte über)
+
+Die restlichen Aussagen (j).2, (k).2 folgen nun einfach aus (j).1 bzw. (k).2 zusammen mit den Ordnungsaxiomen.
+
+\end{bew}
+
+
 
 \begin{lemm}[Regel (l)]
 \ \linebreak
@@ -394,14 +413,41 @@ Für die Rückrichtung sei ein Mono $j$ gegeben mit $\im\join(x_1,x_2) = x'.j$ u
 &  $Y_1 \leq Y_2 \implies f^{-1}(Y_1) \leq f^{-1}(Y_2)$
 \end{tabular}
 \end{lemm}
+\begin{bew}
+Folgt aus Regel (i) durch Übergang in Quotientenobjekte.
+\end{bew}
 
 \begin{lemm}[Regel (m)]
 \ \linebreak
 
-\begin{tabular}{ll}
-% TODO
-????
-   $x_2 \leq x_1 \implies $
+\begin{tabular}{rll}
+% TODO: typo?
+   1.
+&  $x_2 \leq x_1 \implies \fib(x-1,\im\join(x'+x_2)) = \im\join(\fib(x_1,x'),x_2)$
 &  $X_2 \leq X_1 \implies X_1 \cap (X'+X_2) = (X_1\cap X') + X_2$
+\\ 2.
+&  $\fib(x',\im\join(x_1,x_2)) \leq \im\join(\fib(x_1,\im\join(x',x_2)),x_2)$
+&  $X' \cap (X_1 + X_2) \leq X_1 \cap (X' + X_2) + X_2$
+\\ 3.
+&  Die Aussagen 1 und 2 sind äquivalent.
 \end{tabular}
+\end{lemm}
+
+\begin{lemm}[Regel (n)]
+Ist $(f,f') : (X,X') \to (Y,Y')$ ein Pfeil von 2-Komplexen, und sind $y'' : Y'' \monicr Y', x'' : X'' \monicr X'$ Monos, so gilt
+
+\ \linebreak
+\begin{tabular}{rll}
+% TODO
+   1.
+&  $y'.\im(f'.x'') = \im(f.x'.x'')$
+&  $f'(X'') = f(X'')$
+\\ 2.
+&  $y'.\im(f') \leq \im(f)$
+&  $\Bild(f') \leq \Bild(f)$
+\\ 3.
+&  $x'.\fib_1(f',y'') = \fib(\fib_1(f,x'.x''),x')$
+&  $(f')^{-1}(Y'') = f^{-1}(X'') \cap X'$
+\end{tabular}
+
 \end{lemm}
